@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem \"C:\\\\Users\\\\Victor\\\\Desktop\\\\ia\\\\afiliados\\\\\" | Select-Object Name, Length, LastWriteTime *)",
+      "Bash(Remove-Item *)",
+      "PowerShell($content = Get-Content \"C:\\\\Users\\\\Victor\\\\Desktop\\\\ia\\\\afiliados\\\\main.js\" -Raw; $lines = $content -split \"`n\"; $total = $lines.Count; Write-Host \"Total lines: $total\"; for \\($i = $total - 25; $i -lt $total; $i++\\) { Write-Host \"$\\($i+1\\): $\\($lines[$i]\\)\" })",
+      "PowerShell($lines = Get-Content \"C:\\\\Users\\\\Victor\\\\Desktop\\\\ia\\\\afiliados\\\\main.js\"; Write-Host \"Total lines: $\\($lines.Count\\)\")",
+      "Bash(gh auth *)",
+      "PowerShell(gh auth *)",
+      "PowerShell(winget *)"
+    ]
+  }
+}
