@@ -41,7 +41,7 @@
 <div class="prog-bar" id="progBar"></div>
 
 <!-- ═══════════════════════════════════════════
-     NAVBAR (compartido)
+     NAVBAR
 ═══════════════════════════════════════════ -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
@@ -55,15 +55,15 @@
       Broker<em>Compass</em>
     </a>
     <ul class="nav-links" role="list">
-      <li><a href="#inicio"      data-page="inicio"      class="nav-act">Inicio</a></li>
-      <li><a href="#comparativa" data-page="comparativa">Comparativa</a></li>
-      <li><a href="#guias"       data-page="guias">Guías</a></li>
+      <li><a href="#inicio"      data-page="inicio"      class="nav-act" data-i18n="nav.home">Inicio</a></li>
+      <li><a href="#comparativa" data-page="comparativa" data-i18n="nav.comparison">Comparativa</a></li>
+      <li><a href="#guias"       data-page="guias"       data-i18n="nav.guides">Guías</a></li>
       <li><a href="#faq"         data-page="faq">FAQ</a></li>
-      <li><a href="#contacto"    data-page="contacto">Contacto</a></li>
+      <li><a href="#contacto"    data-page="contacto"    data-i18n="nav.contact">Contacto</a></li>
     </ul>
     <div class="nav-right">
-      <button class="translate-btn notranslate" id="translateBtn" aria-label="Cambiar idioma">🌐 English</button>
-      <a href="#comparativa" data-page="comparativa" class="btn btn-primary btn-sm notranslate">Ver mejores brokers →</a>
+      <button class="translate-btn" id="translateBtn" aria-label="Cambiar idioma">🌐 EN</button>
+      <a href="#comparativa" data-page="comparativa" class="btn btn-primary btn-sm" data-i18n="nav.cta">Ver mejores brokers →</a>
       <button class="hamburger" id="ham" aria-label="Abrir menú" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -73,12 +73,12 @@
 
 <!-- Menú móvil -->
 <div class="mob-menu" id="mobMenu">
-  <a href="#inicio"      data-page="inicio">Inicio</a>
-  <a href="#comparativa" data-page="comparativa">Comparativa</a>
-  <a href="#guias"       data-page="guias">Guías</a>
+  <a href="#inicio"      data-page="inicio"      data-i18n="nav.home">Inicio</a>
+  <a href="#comparativa" data-page="comparativa" data-i18n="nav.comparison">Comparativa</a>
+  <a href="#guias"       data-page="guias"       data-i18n="nav.guides">Guías</a>
   <a href="#faq"         data-page="faq">FAQ</a>
-  <a href="#contacto"    data-page="contacto">Contacto</a>
-  <a href="#comparativa" data-page="comparativa" class="btn btn-primary">Ver mejores brokers →</a>
+  <a href="#contacto"    data-page="contacto"    data-i18n="nav.contact">Contacto</a>
+  <a href="#comparativa" data-page="comparativa" class="btn btn-primary" data-i18n="nav.cta">Ver mejores brokers →</a>
 </div>
 
 
@@ -92,29 +92,29 @@
     <div class="hero-bg-grid"></div>
     <div class="container">
       <div class="hero-inner">
-        <span class="badge badge-green fi">✓ Actualizado mayo 2026</span>
-        <h1 class="hero-title fi">
+        <span class="badge badge-green fi" data-i18n="hero.badge">✓ Actualizado mayo 2026</span>
+        <h1 class="hero-title fi" data-i18n-html="hero.title">
           Encuentra el mejor broker para<br>
           <span class="gradient-text">invertir en España</span>
         </h1>
-        <p class="hero-sub fi">Comparativa independiente y actualizada de los brokers más populares. Sin publicidad encubierta, sin letra pequeña. Solo datos.</p>
+        <p class="hero-sub fi" data-i18n="hero.sub">Comparativa independiente y actualizada de los brokers más populares. Sin publicidad encubierta, sin letra pequeña. Solo datos.</p>
         <div class="hero-ctas fi">
-          <a href="#comparativa" data-page="comparativa" class="btn btn-primary btn-lg">Ver comparativa completa →</a>
+          <a href="#comparativa" data-page="comparativa" class="btn btn-primary btn-lg" data-i18n="hero.cta">Ver comparativa completa →</a>
         </div>
         <div class="hero-stats fi">
           <div class="stat-item">
             <span class="stat-num" data-target="10" data-suffix="+">10+</span>
-            <span class="stat-label">Brokers analizados</span>
+            <span class="stat-label" data-i18n="hero.stat1">Brokers analizados</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
             <span class="stat-num" data-target="50000" data-suffix="+">50k+</span>
-            <span class="stat-label">Usuarios ayudados</span>
+            <span class="stat-label" data-i18n="hero.stat2">Usuarios ayudados</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
             <span class="stat-num" data-target="100" data-suffix="%">100%</span>
-            <span class="stat-label">Análisis independiente</span>
+            <span class="stat-label" data-i18n="hero.stat3">Análisis independiente</span>
           </div>
         </div>
       </div>
@@ -125,8 +125,8 @@
   <section class="section">
     <div class="container">
       <div class="section-header fi">
-        <h2 class="section-title">⭐ Los mejores brokers de 2026</h2>
-        <p class="section-sub">Basado en comisiones, seguridad y experiencia de usuario</p>
+        <h2 class="section-title" data-i18n="top.title">⭐ Los mejores brokers de 2026</h2>
+        <p class="section-sub" data-i18n="top.sub">Basado en comisiones, seguridad y experiencia de usuario</p>
       </div>
       <div class="top-brokers-grid">
 
@@ -135,13 +135,13 @@
           <div class="broker-logo-sm" style="background:linear-gradient(135deg,#00d4aa,#00b894);color:#000;">MI</div>
           <div class="top-broker-info">
             <div class="top-broker-name">MyInvestor</div>
-            <div class="top-broker-badge">Mejor para principiantes</div>
+            <div class="top-broker-badge" data-i18n="mi.badge">Mejor para principiantes</div>
             <div class="top-broker-rating">
               <span class="stars">★★★★★</span>
               <span class="rating-num">9.2</span>
             </div>
-            <p class="top-broker-desc">El mejor broker español para empezar. Sin comisiones en fondos indexados y desde 1€ de inversión mínima.</p>
-            <a href="#comparativa" data-page="comparativa" class="btn btn-outline btn-sm">Ver análisis →</a>
+            <p class="top-broker-desc" data-i18n="mi.desc">El mejor broker español para empezar. Sin comisiones en fondos indexados y desde 1€ de inversión mínima.</p>
+            <a href="#comparativa" data-page="comparativa" class="btn btn-outline btn-sm" data-i18n="see.analysis">Ver análisis →</a>
           </div>
         </div>
 
@@ -150,13 +150,13 @@
           <div class="broker-logo-sm" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8);color:#fff;">IC</div>
           <div class="top-broker-info">
             <div class="top-broker-name">Indexa Capital</div>
-            <div class="top-broker-badge">Mejor roboadvisor</div>
+            <div class="top-broker-badge" data-i18n="ic.badge">Mejor roboadvisor</div>
             <div class="top-broker-rating">
               <span class="stars">★★★★★</span>
               <span class="rating-num">9.0</span>
             </div>
-            <p class="top-broker-desc">El roboadvisor líder en España. Gestión automática diversificada con costes muy competitivos.</p>
-            <a href="#comparativa" data-page="comparativa" class="btn btn-outline btn-sm">Ver análisis →</a>
+            <p class="top-broker-desc" data-i18n="ic.desc">El roboadvisor líder en España. Gestión automática diversificada con costes muy competitivos.</p>
+            <a href="#comparativa" data-page="comparativa" class="btn btn-outline btn-sm" data-i18n="see.analysis">Ver análisis →</a>
           </div>
         </div>
 
@@ -165,13 +165,13 @@
           <div class="broker-logo-sm" style="background:linear-gradient(135deg,#f97316,#ea580c);color:#fff;">DE</div>
           <div class="top-broker-info">
             <div class="top-broker-name">DEGIRO</div>
-            <div class="top-broker-badge">Mejor para ETFs</div>
+            <div class="top-broker-badge" data-i18n="de.badge">Mejor para ETFs</div>
             <div class="top-broker-rating">
               <span class="stars">★★★★☆</span>
               <span class="rating-num">8.8</span>
             </div>
-            <p class="top-broker-desc">El broker europeo con las comisiones más competitivas para ETFs y mercados internacionales.</p>
-            <a href="#comparativa" data-page="comparativa" class="btn btn-outline btn-sm">Ver análisis →</a>
+            <p class="top-broker-desc" data-i18n="de.desc">El broker europeo con las comisiones más competitivas para ETFs y mercados internacionales.</p>
+            <a href="#comparativa" data-page="comparativa" class="btn btn-outline btn-sm" data-i18n="see.analysis">Ver análisis →</a>
           </div>
         </div>
 
@@ -183,56 +183,56 @@
   <section class="section quiz-section" id="quizSection">
     <div class="container">
       <div class="section-header fi">
-        <h2 class="section-title">🎯 ¿Qué broker es para ti?</h2>
-        <p class="section-sub">Responde 3 preguntas y te recomendamos el broker perfecto para tu perfil</p>
+        <h2 class="section-title" data-i18n="quiz.title">🎯 ¿Qué broker es para ti?</h2>
+        <p class="section-sub" data-i18n="quiz.sub">Responde 3 preguntas y te recomendamos el broker perfecto para tu perfil</p>
       </div>
       <div class="quiz-card fi" id="quizCard">
 
         <!-- Paso 1 -->
         <div class="quiz-step active" id="quizStep1">
-          <div class="quiz-step-label">Pregunta 1 de 3</div>
+          <div class="quiz-step-label" data-i18n="quiz.q1.label">Pregunta 1 de 3</div>
           <div class="quiz-progress"><div class="quiz-progress-bar" style="width:33%"></div></div>
-          <h3 class="quiz-q">¿Cuánto dinero quieres invertir inicialmente?</h3>
+          <h3 class="quiz-q" data-i18n="quiz.q1.text">¿Cuánto dinero quieres invertir inicialmente?</h3>
           <div class="quiz-options">
-            <button class="quiz-opt" data-q="1" data-val="small">Menos de 1.000€</button>
-            <button class="quiz-opt" data-q="1" data-val="medium">Entre 1.000€ y 10.000€</button>
-            <button class="quiz-opt" data-q="1" data-val="large">Más de 10.000€</button>
+            <button class="quiz-opt" data-q="1" data-val="small"  data-i18n="quiz.q1.opt1">Menos de 1.000€</button>
+            <button class="quiz-opt" data-q="1" data-val="medium" data-i18n="quiz.q1.opt2">Entre 1.000€ y 10.000€</button>
+            <button class="quiz-opt" data-q="1" data-val="large"  data-i18n="quiz.q1.opt3">Más de 10.000€</button>
           </div>
         </div>
 
         <!-- Paso 2 -->
         <div class="quiz-step" id="quizStep2">
-          <div class="quiz-step-label">Pregunta 2 de 3</div>
+          <div class="quiz-step-label" data-i18n="quiz.q2.label">Pregunta 2 de 3</div>
           <div class="quiz-progress"><div class="quiz-progress-bar" style="width:66%"></div></div>
-          <h3 class="quiz-q">¿Cuál es tu experiencia invirtiendo?</h3>
+          <h3 class="quiz-q" data-i18n="quiz.q2.text">¿Cuál es tu experiencia invirtiendo?</h3>
           <div class="quiz-options">
-            <button class="quiz-opt" data-q="2" data-val="beginner">Nunca he invertido</button>
-            <button class="quiz-opt" data-q="2" data-val="intermediate">Algo de experiencia</button>
-            <button class="quiz-opt" data-q="2" data-val="advanced">Inversor experimentado</button>
+            <button class="quiz-opt" data-q="2" data-val="beginner"     data-i18n="quiz.q2.opt1">Nunca he invertido</button>
+            <button class="quiz-opt" data-q="2" data-val="intermediate" data-i18n="quiz.q2.opt2">Algo de experiencia</button>
+            <button class="quiz-opt" data-q="2" data-val="advanced"     data-i18n="quiz.q2.opt3">Inversor experimentado</button>
           </div>
         </div>
 
         <!-- Paso 3 -->
         <div class="quiz-step" id="quizStep3">
-          <div class="quiz-step-label">Pregunta 3 de 3</div>
+          <div class="quiz-step-label" data-i18n="quiz.q3.label">Pregunta 3 de 3</div>
           <div class="quiz-progress"><div class="quiz-progress-bar" style="width:100%"></div></div>
-          <h3 class="quiz-q">¿Cuál es tu objetivo principal?</h3>
+          <h3 class="quiz-q" data-i18n="quiz.q3.text">¿Cuál es tu objetivo principal?</h3>
           <div class="quiz-options">
-            <button class="quiz-opt" data-q="3" data-val="passive">Inversión pasiva a largo plazo</button>
-            <button class="quiz-opt" data-q="3" data-val="trading">Hacer trading activo</button>
-            <button class="quiz-opt" data-q="3" data-val="pension">Complementar mi pensión</button>
+            <button class="quiz-opt" data-q="3" data-val="passive"  data-i18n="quiz.q3.opt1">Inversión pasiva a largo plazo</button>
+            <button class="quiz-opt" data-q="3" data-val="trading"  data-i18n="quiz.q3.opt2">Hacer trading activo</button>
+            <button class="quiz-opt" data-q="3" data-val="pension"  data-i18n="quiz.q3.opt3">Complementar mi pensión</button>
           </div>
         </div>
 
         <!-- Resultado -->
         <div class="quiz-step" id="quizResult">
           <div class="quiz-result-icon">🎯</div>
-          <p class="quiz-result-title">Tu broker ideal es:</p>
+          <p class="quiz-result-title" data-i18n="quiz.result">Tu broker ideal es:</p>
           <div class="quiz-result-broker" id="quizBrokerName"></div>
           <p class="quiz-result-reason" id="quizBrokerReason"></p>
           <div class="quiz-result-actions">
-            <a href="#comparativa" data-page="comparativa" class="btn btn-primary">Ver análisis completo →</a>
-            <button class="btn btn-secondary" id="quizRestart">Volver a empezar</button>
+            <a href="#comparativa" data-page="comparativa" class="btn btn-primary" data-i18n="quiz.result.cta">Ver análisis completo →</a>
+            <button class="btn btn-secondary" id="quizRestart" data-i18n="quiz.restart">Volver a empezar</button>
           </div>
         </div>
 
@@ -244,28 +244,28 @@
   <section class="section">
     <div class="container">
       <div class="section-header fi">
-        <h2 class="section-title">¿Por qué confiar en BrokerCompass?</h2>
+        <h2 class="section-title" data-i18n="trust.title">¿Por qué confiar en BrokerCompass?</h2>
       </div>
       <div class="trust-grid">
         <div class="trust-card fi">
           <span class="trust-icon">🔍</span>
-          <h3 class="trust-title">Análisis independiente</h3>
-          <p class="trust-desc">No somos propiedad de ningún broker. Nuestras puntuaciones reflejan datos reales, no acuerdos comerciales.</p>
+          <h3 class="trust-title" data-i18n="trust1.title">Análisis independiente</h3>
+          <p class="trust-desc" data-i18n="trust1.desc">No somos propiedad de ningún broker. Nuestras puntuaciones reflejan datos reales, no acuerdos comerciales.</p>
         </div>
         <div class="trust-card fi d1">
           <span class="trust-icon">📅</span>
-          <h3 class="trust-title">Actualizamos cada mes</h3>
-          <p class="trust-desc">Las comisiones y condiciones cambian. Revisamos cada análisis mensualmente para que siempre tengas datos frescos.</p>
+          <h3 class="trust-title" data-i18n="trust2.title">Actualizamos cada mes</h3>
+          <p class="trust-desc" data-i18n="trust2.desc">Las comisiones y condiciones cambian. Revisamos cada análisis mensualmente para que siempre tengas datos frescos.</p>
         </div>
         <div class="trust-card fi d2">
           <span class="trust-icon">✅</span>
-          <h3 class="trust-title">Sin letra pequeña</h3>
-          <p class="trust-desc">Explicamos todas las comisiones, incluidas las ocultas. Si hay un inconveniente, lo decimos claramente.</p>
+          <h3 class="trust-title" data-i18n="trust3.title">Sin letra pequeña</h3>
+          <p class="trust-desc" data-i18n="trust3.desc">Explicamos todas las comisiones, incluidas las ocultas. Si hay un inconveniente, lo decimos claramente.</p>
         </div>
         <div class="trust-card fi d3">
           <span class="trust-icon">👥</span>
-          <h3 class="trust-title">50.000+ usuarios satisfechos</h3>
-          <p class="trust-desc">Miles de inversores españoles han encontrado su broker ideal gracias a nuestras comparativas.</p>
+          <h3 class="trust-title" data-i18n="trust4.title">50.000+ usuarios satisfechos</h3>
+          <p class="trust-desc" data-i18n="trust4.desc">Miles de inversores españoles han encontrado su broker ideal gracias a nuestras comparativas.</p>
         </div>
       </div>
     </div>
@@ -275,38 +275,37 @@
   <section class="section section-alt">
     <div class="container">
       <div class="section-header fi">
-        <h2 class="section-title">📚 Aprende a invertir</h2>
-        <p class="section-sub">Todo lo que necesitas saber para empezar</p>
+        <h2 class="section-title" data-i18n="blog.title">📚 Aprende a invertir</h2>
+        <p class="section-sub" data-i18n="blog.sub">Todo lo que necesitas saber para empezar</p>
       </div>
       <div class="blog-grid">
         <article class="blog-card fi">
           <div class="blog-card-icon">📖</div>
-          <div class="blog-card-meta">Guía · Mayo 2026</div>
-          <h3 class="blog-card-title">Cómo elegir tu primer broker en España</h3>
-          <p class="blog-card-desc">Paso a paso para abrir tu primera cuenta de inversión sin cometer los errores más comunes.</p>
-          <a href="#" class="blog-card-link guide-modal-btn" data-guide="guia-1">Leer guía →</a>
+          <div class="blog-card-meta" data-i18n="blog1.meta">Guía · Mayo 2026</div>
+          <h3 class="blog-card-title" data-i18n="blog1.title">Cómo elegir tu primer broker en España</h3>
+          <p class="blog-card-desc" data-i18n="blog1.desc">Paso a paso para abrir tu primera cuenta de inversión sin cometer los errores más comunes.</p>
+          <a href="#" class="blog-card-link guide-modal-btn" data-guide="guia-1" data-i18n="blog.read">Leer guía →</a>
         </article>
         <article class="blog-card fi d1">
           <div class="blog-card-icon">📈</div>
-          <div class="blog-card-meta">Guía · Abril 2026</div>
-          <h3 class="blog-card-title">Fondos indexados vs ETFs: ¿cuál es mejor?</h3>
-          <p class="blog-card-desc">Comparamos en profundidad fondos indexados y ETFs para que sepas cuál encaja con tu estrategia.</p>
-          <a href="#" class="blog-card-link guide-modal-btn" data-guide="guia-2">Leer guía →</a>
+          <div class="blog-card-meta" data-i18n="blog2.meta">Guía · Abril 2026</div>
+          <h3 class="blog-card-title" data-i18n="blog2.title">Fondos indexados vs ETFs: ¿cuál es mejor?</h3>
+          <p class="blog-card-desc" data-i18n="blog2.desc">Comparamos en profundidad fondos indexados y ETFs para que sepas cuál encaja con tu estrategia.</p>
+          <a href="#" class="blog-card-link guide-modal-btn" data-guide="guia-2" data-i18n="blog.read">Leer guía →</a>
         </article>
         <article class="blog-card fi d2">
           <div class="blog-card-icon">💰</div>
-          <div class="blog-card-meta">Guía · Marzo 2026</div>
-          <h3 class="blog-card-title">Cómo empezar a invertir con solo 100€</h3>
-          <p class="blog-card-desc">Demuestra que no hace falta mucho capital. Con 100€ ya puedes construir una cartera diversificada.</p>
-          <a href="#" class="blog-card-link guide-modal-btn" data-guide="guia-3">Leer guía →</a>
+          <div class="blog-card-meta" data-i18n="blog3.meta">Guía · Marzo 2026</div>
+          <h3 class="blog-card-title" data-i18n="blog3.title">Cómo empezar a invertir con solo 100€</h3>
+          <p class="blog-card-desc" data-i18n="blog3.desc">Demuestra que no hace falta mucho capital. Con 100€ ya puedes construir una cartera diversificada.</p>
+          <a href="#" class="blog-card-link guide-modal-btn" data-guide="guia-3" data-i18n="blog.read">Leer guía →</a>
         </article>
       </div>
       <div class="text-center fi">
-        <a href="#guias" data-page="guias" class="btn btn-secondary">Ver todas las guías →</a>
+        <a href="#guias" data-page="guias" class="btn btn-secondary" data-i18n="blog.all">Ver todas las guías →</a>
       </div>
     </div>
   </section>
-
 
 </section><!-- /inicio -->
 
@@ -316,13 +315,12 @@
 ═══════════════════════════════════════════ -->
 <section class="page" id="comparativa">
 
-  <!-- Hero de página -->
   <section class="page-hero">
     <div class="container">
       <div class="page-hero-inner">
-        <span class="eyebrow">📊 Actualizado mayo 2026</span>
-        <h1 class="page-hero-title fi">Comparativa completa de brokers<br>en España 2026</h1>
-        <p class="page-hero-sub fi">Analizamos en profundidad los 6 mejores brokers del mercado español. Comisiones reales, pros y contras, y todo lo que necesitas para elegir con confianza.</p>
+        <span class="eyebrow" data-i18n="comp.eyebrow">📊 Actualizado mayo 2026</span>
+        <h1 class="page-hero-title fi" data-i18n-html="comp.title">Comparativa completa de brokers<br>en España 2026</h1>
+        <p class="page-hero-sub fi" data-i18n="comp.sub">Analizamos en profundidad los 6 mejores brokers del mercado español. Comisiones reales, pros y contras, y todo lo que necesitas para elegir con confianza.</p>
       </div>
     </div>
   </section>
@@ -331,10 +329,10 @@
   <div class="filters-section">
     <div class="container">
       <div class="filters fi">
-        <button class="filter-btn active" data-filter="all">Todos</button>
-        <button class="filter-btn" data-filter="principiante">Principiante</button>
-        <button class="filter-btn" data-filter="intermedio">Intermedio</button>
-        <button class="filter-btn" data-filter="avanzado">Avanzado</button>
+        <button class="filter-btn active" data-filter="all"          data-i18n="filter.all">Todos</button>
+        <button class="filter-btn"        data-filter="principiante" data-i18n="filter.beginner">Principiante</button>
+        <button class="filter-btn"        data-filter="intermedio"   data-i18n="filter.inter">Intermedio</button>
+        <button class="filter-btn"        data-filter="avanzado"     data-i18n="filter.advanced">Avanzado</button>
       </div>
     </div>
   </div>
@@ -350,7 +348,7 @@
             <div class="broker-logo" style="background:linear-gradient(135deg,#00d4aa,#00b894);color:#000;">MI</div>
             <div class="broker-meta">
               <h2 class="broker-name">MyInvestor</h2>
-              <span class="broker-badge">Mejor para principiantes</span>
+              <span class="broker-badge" data-i18n="mi.full.badge">Mejor para principiantes</span>
             </div>
             <div class="broker-score-box">
               <div class="broker-score">9.2</div>
@@ -360,44 +358,44 @@
           </div>
           <div class="broker-stats-row">
             <div class="broker-stat">
-              <span class="bstat-label">Comisiones</span>
-              <span class="bstat-value bstat-green">0% fondos</span>
+              <span class="bstat-label" data-i18n="bstat.fees">Comisiones</span>
+              <span class="bstat-value bstat-green" data-i18n="mi.full.fees">0% fondos</span>
             </div>
             <div class="broker-stat">
-              <span class="bstat-label">Mínimo</span>
+              <span class="bstat-label" data-i18n="bstat.min">Mínimo</span>
               <span class="bstat-value">1€</span>
             </div>
             <div class="broker-stat">
-              <span class="bstat-label">Tipo</span>
-              <span class="bstat-value">Broker · Roboadvisor</span>
+              <span class="bstat-label" data-i18n="bstat.type">Tipo</span>
+              <span class="bstat-value" data-i18n="mi.full.type">Broker · Roboadvisor</span>
             </div>
             <div class="broker-stat">
-              <span class="bstat-label">Mercados</span>
-              <span class="bstat-value">Fondos · ETFs · Acciones</span>
+              <span class="bstat-label" data-i18n="bstat.markets">Mercados</span>
+              <span class="bstat-value" data-i18n="mi.full.markets">Fondos · ETFs · Acciones</span>
             </div>
           </div>
           <div class="broker-pros-cons">
             <div class="broker-pros">
-              <div class="pc-title pros-title">✓ Puntos fuertes</div>
+              <div class="pc-title pros-title" data-i18n="pros.title">✓ Puntos fuertes</div>
               <ul>
-                <li>Sin comisiones en fondos indexados</li>
-                <li>Gran variedad de productos</li>
-                <li>Interfaz sencilla para principiantes</li>
+                <li data-i18n="mi.pro1">Sin comisiones en fondos indexados</li>
+                <li data-i18n="mi.pro2">Gran variedad de productos</li>
+                <li data-i18n="mi.pro3">Interfaz sencilla para principiantes</li>
               </ul>
             </div>
             <div class="broker-cons">
-              <div class="pc-title cons-title">✗ Puntos débiles</div>
+              <div class="pc-title cons-title" data-i18n="cons.title">✗ Puntos débiles</div>
               <ul>
-                <li>Aplicación móvil mejorable</li>
-                <li>Soporte al cliente lento</li>
+                <li data-i18n="mi.con1">Aplicación móvil mejorable</li>
+                <li data-i18n="mi.con2">Soporte al cliente lento</li>
               </ul>
             </div>
           </div>
           <div class="broker-card-footer">
-            <!-- REEMPLAZAR HREF CON TU ENLACE DE AFILIADO DE MYINVESTOR --><a href="#afiliado-myinvestor" class="btn btn-primary" data-tooltip="Enlace de afiliado · sin coste para ti">Abrir cuenta gratis →</a>
-            <span class="broker-regulated">🔒 Regulado CNMV</span>
+            <a href="#afiliado-myinvestor" class="btn btn-primary" data-tooltip="Enlace de afiliado · sin coste para ti" data-i18n="mi.cta">Abrir cuenta gratis →</a>
+            <span class="broker-regulated" data-i18n="mi.regulated">🔒 Regulado CNMV</span>
           </div>
-          <p class="broker-note">* Enlace de afiliado — sin coste para ti</p>
+          <p class="broker-note" data-i18n="mi.note">* Enlace de afiliado — sin coste para ti</p>
         </article>
 
         <!-- Indexa Capital -->
@@ -406,7 +404,7 @@
             <div class="broker-logo" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8);color:#fff;">IC</div>
             <div class="broker-meta">
               <h2 class="broker-name">Indexa Capital</h2>
-              <span class="broker-badge">Mejor roboadvisor</span>
+              <span class="broker-badge" data-i18n="ic.full.badge">Mejor roboadvisor</span>
             </div>
             <div class="broker-score-box">
               <div class="broker-score">9.0</div>
@@ -416,44 +414,44 @@
           </div>
           <div class="broker-stats-row">
             <div class="broker-stat">
-              <span class="bstat-label">Comisiones</span>
-              <span class="bstat-value bstat-green">0.43% anual</span>
+              <span class="bstat-label" data-i18n="bstat.fees">Comisiones</span>
+              <span class="bstat-value bstat-green" data-i18n="ic.full.fees">0.43% anual</span>
             </div>
             <div class="broker-stat">
-              <span class="bstat-label">Mínimo</span>
+              <span class="bstat-label" data-i18n="bstat.min">Mínimo</span>
               <span class="bstat-value">1.000€</span>
             </div>
             <div class="broker-stat">
-              <span class="bstat-label">Tipo</span>
-              <span class="bstat-value">Roboadvisor</span>
+              <span class="bstat-label" data-i18n="bstat.type">Tipo</span>
+              <span class="bstat-value" data-i18n="ic.full.type">Roboadvisor</span>
             </div>
             <div class="broker-stat">
-              <span class="bstat-label">Mercados</span>
-              <span class="bstat-value">Fondos indexados · Pensiones</span>
+              <span class="bstat-label" data-i18n="bstat.markets">Mercados</span>
+              <span class="bstat-value" data-i18n="ic.full.markets">Fondos indexados · Pensiones</span>
             </div>
           </div>
           <div class="broker-pros-cons">
             <div class="broker-pros">
-              <div class="pc-title pros-title">✓ Puntos fuertes</div>
+              <div class="pc-title pros-title" data-i18n="pros.title">✓ Puntos fuertes</div>
               <ul>
-                <li>Gestión completamente automatizada</li>
-                <li>Bajo coste frente a fondos activos</li>
-                <li>Excelente historial de rentabilidad</li>
+                <li data-i18n="ic.pro1">Gestión completamente automatizada</li>
+                <li data-i18n="ic.pro2">Bajo coste frente a fondos activos</li>
+                <li data-i18n="ic.pro3">Excelente historial de rentabilidad</li>
               </ul>
             </div>
             <div class="broker-cons">
-              <div class="pc-title cons-title">✗ Puntos débiles</div>
+              <div class="pc-title cons-title" data-i18n="cons.title">✗ Puntos débiles</div>
               <ul>
-                <li>Mínimo de inversión 1.000€</li>
-                <li>Sin acciones individuales</li>
+                <li data-i18n="ic.con1">Mínimo de inversión 1.000€</li>
+                <li data-i18n="ic.con2">Sin acciones individuales</li>
               </ul>
             </div>
           </div>
           <div class="broker-card-footer">
-            <!-- REEMPLAZAR HREF CON TU ENLACE DE AFILIADO DE INDEXA CAPITAL --><a href="#afiliado-indexa" class="btn btn-primary" data-tooltip="Enlace de afiliado · sin coste para ti">Probar gratis 6 meses →</a>
-            <span class="broker-regulated">🔒 Regulado CNMV</span>
+            <a href="#afiliado-indexa" class="btn btn-primary" data-tooltip="Enlace de afiliado · sin coste para ti" data-i18n="ic.cta">Probar gratis 6 meses →</a>
+            <span class="broker-regulated" data-i18n="ic.regulated">🔒 Regulado CNMV</span>
           </div>
-          <p class="broker-note">* Enlace de afiliado — sin coste para ti</p>
+          <p class="broker-note" data-i18n="ic.note">* Enlace de afiliado — sin coste para ti</p>
         </article>
 
         <!-- DEGIRO -->
@@ -462,7 +460,7 @@
             <div class="broker-logo" style="background:linear-gradient(135deg,#f97316,#ea580c);color:#fff;">DE</div>
             <div class="broker-meta">
               <h2 class="broker-name">DEGIRO</h2>
-              <span class="broker-badge">Mejor para ETFs</span>
+              <span class="broker-badge" data-i18n="de.full.badge">Mejor para ETFs</span>
             </div>
             <div class="broker-score-box">
               <div class="broker-score">8.8</div>
@@ -472,44 +470,44 @@
           </div>
           <div class="broker-stats-row">
             <div class="broker-stat">
-              <span class="bstat-label">Comisiones</span>
-              <span class="bstat-value bstat-green">Desde 0€ ETFs</span>
+              <span class="bstat-label" data-i18n="bstat.fees">Comisiones</span>
+              <span class="bstat-value bstat-green" data-i18n="de.full.fees">Desde 0€ ETFs</span>
             </div>
             <div class="broker-stat">
-              <span class="bstat-label">Mínimo</span>
+              <span class="bstat-label" data-i18n="bstat.min">Mínimo</span>
               <span class="bstat-value">0€</span>
             </div>
             <div class="broker-stat">
-              <span class="bstat-label">Tipo</span>
-              <span class="bstat-value">Broker</span>
+              <span class="bstat-label" data-i18n="bstat.type">Tipo</span>
+              <span class="bstat-value" data-i18n="de.full.type">Broker</span>
             </div>
             <div class="broker-stat">
-              <span class="bstat-label">Mercados</span>
-              <span class="bstat-value">ETFs · Acciones · Opciones</span>
+              <span class="bstat-label" data-i18n="bstat.markets">Mercados</span>
+              <span class="bstat-value" data-i18n="de.full.markets">ETFs · Acciones · Opciones</span>
             </div>
           </div>
           <div class="broker-pros-cons">
             <div class="broker-pros">
-              <div class="pc-title pros-title">✓ Puntos fuertes</div>
+              <div class="pc-title pros-title" data-i18n="pros.title">✓ Puntos fuertes</div>
               <ul>
-                <li>Comisiones muy bajas en ETFs</li>
-                <li>Gran variedad de mercados internacionales</li>
-                <li>Sin mínimo de inversión</li>
+                <li data-i18n="de.pro1">Comisiones muy bajas en ETFs</li>
+                <li data-i18n="de.pro2">Gran variedad de mercados internacionales</li>
+                <li data-i18n="de.pro3">Sin mínimo de inversión</li>
               </ul>
             </div>
             <div class="broker-cons">
-              <div class="pc-title cons-title">✗ Puntos débiles</div>
+              <div class="pc-title cons-title" data-i18n="cons.title">✗ Puntos débiles</div>
               <ul>
-                <li>Sin fondos indexados tradicionales</li>
-                <li>Atención al cliente solo en inglés</li>
+                <li data-i18n="de.con1">Sin fondos indexados tradicionales</li>
+                <li data-i18n="de.con2">Atención al cliente solo en inglés</li>
               </ul>
             </div>
           </div>
           <div class="broker-card-footer">
-            <!-- REEMPLAZAR HREF CON TU ENLACE DE AFILIADO DE DEGIRO --><a href="#afiliado-degiro" class="btn btn-primary" data-tooltip="Enlace de afiliado · sin coste para ti">Abrir cuenta →</a>
-            <span class="broker-regulated">🔒 Regulado BaFin / CNMV</span>
+            <a href="#afiliado-degiro" class="btn btn-primary" data-tooltip="Enlace de afiliado · sin coste para ti" data-i18n="de.cta">Abrir cuenta →</a>
+            <span class="broker-regulated" data-i18n="de.regulated">🔒 Regulado BaFin / CNMV</span>
           </div>
-          <p class="broker-note">* Enlace de afiliado — sin coste para ti</p>
+          <p class="broker-note" data-i18n="de.note">* Enlace de afiliado — sin coste para ti</p>
         </article>
 
         <!-- Interactive Brokers -->
@@ -518,7 +516,7 @@
             <div class="broker-logo" style="background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;">IB</div>
             <div class="broker-meta">
               <h2 class="broker-name">Interactive Brokers</h2>
-              <span class="broker-badge">Mejor para avanzados</span>
+              <span class="broker-badge" data-i18n="ib.badge">Mejor para avanzados</span>
             </div>
             <div class="broker-score-box">
               <div class="broker-score">8.5</div>
@@ -528,44 +526,44 @@
           </div>
           <div class="broker-stats-row">
             <div class="broker-stat">
-              <span class="bstat-label">Comisiones</span>
-              <span class="bstat-value bstat-green">Desde 0€</span>
+              <span class="bstat-label" data-i18n="bstat.fees">Comisiones</span>
+              <span class="bstat-value bstat-green" data-i18n="ib.fees">Desde 0€</span>
             </div>
             <div class="broker-stat">
-              <span class="bstat-label">Mínimo</span>
+              <span class="bstat-label" data-i18n="bstat.min">Mínimo</span>
               <span class="bstat-value">0€</span>
             </div>
             <div class="broker-stat">
-              <span class="bstat-label">Tipo</span>
-              <span class="bstat-value">Broker profesional</span>
+              <span class="bstat-label" data-i18n="bstat.type">Tipo</span>
+              <span class="bstat-value" data-i18n="ib.type">Broker profesional</span>
             </div>
             <div class="broker-stat">
-              <span class="bstat-label">Mercados</span>
-              <span class="bstat-value">Todos los activos globales</span>
+              <span class="bstat-label" data-i18n="bstat.markets">Mercados</span>
+              <span class="bstat-value" data-i18n="ib.markets">Todos los activos globales</span>
             </div>
           </div>
           <div class="broker-pros-cons">
             <div class="broker-pros">
-              <div class="pc-title pros-title">✓ Puntos fuertes</div>
+              <div class="pc-title pros-title" data-i18n="pros.title">✓ Puntos fuertes</div>
               <ul>
-                <li>El broker más completo del mercado</li>
-                <li>Acceso a todos los mercados globales</li>
-                <li>Herramientas profesionales avanzadas</li>
+                <li data-i18n="ib.pro1">El broker más completo del mercado</li>
+                <li data-i18n="ib.pro2">Acceso a todos los mercados globales</li>
+                <li data-i18n="ib.pro3">Herramientas profesionales avanzadas</li>
               </ul>
             </div>
             <div class="broker-cons">
-              <div class="pc-title cons-title">✗ Puntos débiles</div>
+              <div class="pc-title cons-title" data-i18n="cons.title">✗ Puntos débiles</div>
               <ul>
-                <li>Interfaz compleja para principiantes</li>
-                <li>Comisiones de inactividad</li>
+                <li data-i18n="ib.con1">Interfaz compleja para principiantes</li>
+                <li data-i18n="ib.con2">Comisiones de inactividad</li>
               </ul>
             </div>
           </div>
           <div class="broker-card-footer">
-            <!-- REEMPLAZAR HREF CON TU ENLACE DE AFILIADO DE INTERACTIVE BROKERS --><a href="#afiliado-ib" class="btn btn-primary" data-tooltip="Enlace de afiliado · sin coste para ti">Abrir cuenta →</a>
-            <span class="broker-regulated">🔒 Regulado SEC / FCA / CNMV</span>
+            <a href="#afiliado-ib" class="btn btn-primary" data-tooltip="Enlace de afiliado · sin coste para ti" data-i18n="ib.cta">Abrir cuenta →</a>
+            <span class="broker-regulated" data-i18n="ib.regulated">🔒 Regulado SEC / FCA / CNMV</span>
           </div>
-          <p class="broker-note">* Enlace de afiliado — sin coste para ti</p>
+          <p class="broker-note" data-i18n="ib.note">* Enlace de afiliado — sin coste para ti</p>
         </article>
 
         <!-- Finizens -->
@@ -574,7 +572,7 @@
             <div class="broker-logo" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;">FZ</div>
             <div class="broker-meta">
               <h2 class="broker-name">Finizens</h2>
-              <span class="broker-badge">Comisiones más bajas</span>
+              <span class="broker-badge" data-i18n="fz.badge">Comisiones más bajas</span>
             </div>
             <div class="broker-score-box">
               <div class="broker-score">8.3</div>
@@ -584,44 +582,44 @@
           </div>
           <div class="broker-stats-row">
             <div class="broker-stat">
-              <span class="bstat-label">Comisiones</span>
-              <span class="bstat-value bstat-green">Desde 0.12%</span>
+              <span class="bstat-label" data-i18n="bstat.fees">Comisiones</span>
+              <span class="bstat-value bstat-green" data-i18n="fz.fees">Desde 0.12%</span>
             </div>
             <div class="broker-stat">
-              <span class="bstat-label">Mínimo</span>
+              <span class="bstat-label" data-i18n="bstat.min">Mínimo</span>
               <span class="bstat-value">50€</span>
             </div>
             <div class="broker-stat">
-              <span class="bstat-label">Tipo</span>
-              <span class="bstat-value">Roboadvisor</span>
+              <span class="bstat-label" data-i18n="bstat.type">Tipo</span>
+              <span class="bstat-value" data-i18n="fz.type">Roboadvisor</span>
             </div>
             <div class="broker-stat">
-              <span class="bstat-label">Mercados</span>
-              <span class="bstat-value">Fondos indexados · Pensiones</span>
+              <span class="bstat-label" data-i18n="bstat.markets">Mercados</span>
+              <span class="bstat-value" data-i18n="fz.markets">Fondos indexados · Pensiones</span>
             </div>
           </div>
           <div class="broker-pros-cons">
             <div class="broker-pros">
-              <div class="pc-title pros-title">✓ Puntos fuertes</div>
+              <div class="pc-title pros-title" data-i18n="pros.title">✓ Puntos fuertes</div>
               <ul>
-                <li>Las comisiones más bajas del mercado</li>
-                <li>Muy fácil de usar</li>
-                <li>Aportaciones automáticas programables</li>
+                <li data-i18n="fz.pro1">Las comisiones más bajas del mercado</li>
+                <li data-i18n="fz.pro2">Muy fácil de usar</li>
+                <li data-i18n="fz.pro3">Aportaciones automáticas programables</li>
               </ul>
             </div>
             <div class="broker-cons">
-              <div class="pc-title cons-title">✗ Puntos débiles</div>
+              <div class="pc-title cons-title" data-i18n="cons.title">✗ Puntos débiles</div>
               <ul>
-                <li>Sin acciones individuales</li>
-                <li>Poca flexibilidad de cartera</li>
+                <li data-i18n="fz.con1">Sin acciones individuales</li>
+                <li data-i18n="fz.con2">Poca flexibilidad de cartera</li>
               </ul>
             </div>
           </div>
           <div class="broker-card-footer">
-            <!-- REEMPLAZAR HREF CON TU ENLACE DE AFILIADO DE FINIZENS --><a href="#afiliado-finizens" class="btn btn-primary" data-tooltip="Enlace de afiliado · sin coste para ti">Empezar →</a>
-            <span class="broker-regulated">🔒 Regulado CNMV</span>
+            <a href="#afiliado-finizens" class="btn btn-primary" data-tooltip="Enlace de afiliado · sin coste para ti" data-i18n="fz.cta">Empezar →</a>
+            <span class="broker-regulated" data-i18n="fz.regulated">🔒 Regulado CNMV</span>
           </div>
-          <p class="broker-note">* Enlace de afiliado — sin coste para ti</p>
+          <p class="broker-note" data-i18n="fz.note">* Enlace de afiliado — sin coste para ti</p>
         </article>
 
         <!-- eToro -->
@@ -630,7 +628,7 @@
             <div class="broker-logo" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;">eT</div>
             <div class="broker-meta">
               <h2 class="broker-name">eToro</h2>
-              <span class="broker-badge">Mejor app</span>
+              <span class="broker-badge" data-i18n="et.badge">Mejor app</span>
             </div>
             <div class="broker-score-box">
               <div class="broker-score">7.8</div>
@@ -640,44 +638,44 @@
           </div>
           <div class="broker-stats-row">
             <div class="broker-stat">
-              <span class="bstat-label">Comisiones</span>
-              <span class="bstat-value bstat-green">0% acciones</span>
+              <span class="bstat-label" data-i18n="bstat.fees">Comisiones</span>
+              <span class="bstat-value bstat-green" data-i18n="et.fees">0% acciones</span>
             </div>
             <div class="broker-stat">
-              <span class="bstat-label">Mínimo</span>
+              <span class="bstat-label" data-i18n="bstat.min">Mínimo</span>
               <span class="bstat-value">50€</span>
             </div>
             <div class="broker-stat">
-              <span class="bstat-label">Tipo</span>
-              <span class="bstat-value">Broker social</span>
+              <span class="bstat-label" data-i18n="bstat.type">Tipo</span>
+              <span class="bstat-value" data-i18n="et.type">Broker social</span>
             </div>
             <div class="broker-stat">
-              <span class="bstat-label">Mercados</span>
-              <span class="bstat-value">Acciones · ETFs · Criptos</span>
+              <span class="bstat-label" data-i18n="bstat.markets">Mercados</span>
+              <span class="bstat-value" data-i18n="et.markets">Acciones · ETFs · Criptos</span>
             </div>
           </div>
           <div class="broker-pros-cons">
             <div class="broker-pros">
-              <div class="pc-title pros-title">✓ Puntos fuertes</div>
+              <div class="pc-title pros-title" data-i18n="pros.title">✓ Puntos fuertes</div>
               <ul>
-                <li>CopyTrading único en el mercado</li>
-                <li>Aplicación excelente e intuitiva</li>
-                <li>Gran comunidad de inversores</li>
+                <li data-i18n="et.pro1">CopyTrading único en el mercado</li>
+                <li data-i18n="et.pro2">Aplicación excelente e intuitiva</li>
+                <li data-i18n="et.pro3">Gran comunidad de inversores</li>
               </ul>
             </div>
             <div class="broker-cons">
-              <div class="pc-title cons-title">✗ Puntos débiles</div>
+              <div class="pc-title cons-title" data-i18n="cons.title">✗ Puntos débiles</div>
               <ul>
-                <li>Spread en operaciones (coste oculto)</li>
-                <li>No ideal para inversión a largo plazo</li>
+                <li data-i18n="et.con1">Spread en operaciones (coste oculto)</li>
+                <li data-i18n="et.con2">No ideal para inversión a largo plazo</li>
               </ul>
             </div>
           </div>
           <div class="broker-card-footer">
-            <!-- REEMPLAZAR HREF CON TU ENLACE DE AFILIADO DE ETORO --><a href="#afiliado-etoro" class="btn btn-primary" data-tooltip="Enlace de afiliado · sin coste para ti">Abrir cuenta →</a>
-            <span class="broker-regulated">🔒 Regulado CySEC / FCA</span>
+            <a href="#afiliado-etoro" class="btn btn-primary" data-tooltip="Enlace de afiliado · sin coste para ti" data-i18n="et.cta">Abrir cuenta →</a>
+            <span class="broker-regulated" data-i18n="et.regulated">🔒 Regulado CySEC / FCA</span>
           </div>
-          <p class="broker-note">* Enlace de afiliado — sin coste para ti</p>
+          <p class="broker-note" data-i18n="et.note">* Enlace de afiliado — sin coste para ti</p>
         </article>
 
       </div>
@@ -688,20 +686,20 @@
   <section class="section section-alt">
     <div class="container">
       <div class="section-header fi">
-        <h2 class="section-title">Comparativa rápida</h2>
-        <p class="section-sub">Todos los brokers de un vistazo</p>
+        <h2 class="section-title" data-i18n="tbl.title">Comparativa rápida</h2>
+        <p class="section-sub" data-i18n="tbl.sub">Todos los brokers de un vistazo</p>
       </div>
       <div class="tbl-wrap fi">
         <table class="broker-table" role="table" aria-label="Comparativa de brokers">
           <thead>
             <tr>
-              <th>Broker</th>
-              <th>Puntuación <span class="tooltip" aria-label="Nota del 1 al 10 basada en comisiones, seguridad y usabilidad"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span></th>
-              <th>Comisiones</th>
-              <th>Mínimo</th>
-              <th>Mejor para</th>
-              <th>Regulación</th>
-              <th>Acción</th>
+              <th data-i18n="th.broker">Broker</th>
+              <th data-i18n="th.score">Puntuación <span class="tooltip" aria-label="Nota del 1 al 10 basada en comisiones, seguridad y usabilidad"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span></th>
+              <th data-i18n="th.fees">Comisiones</th>
+              <th data-i18n="th.min">Mínimo</th>
+              <th data-i18n="th.bestfor">Mejor para</th>
+              <th data-i18n="th.reg">Regulación</th>
+              <th data-i18n="th.action">Acción</th>
             </tr>
           </thead>
           <tbody>
@@ -710,54 +708,54 @@
               <td><span class="tbl-score">9.2 ★</span></td>
               <td><span class="tbl-green">0% fondos</span></td>
               <td>1€</td>
-              <td>Principiante</td>
+              <td data-i18n="td.beginner">Principiante</td>
               <td>CNMV</td>
-              <td><a href="#myinvestor-afiliado" class="btn btn-primary btn-sm">Abrir</a></td>
+              <td><a href="#myinvestor-afiliado" class="btn btn-primary btn-sm" data-i18n="tbl.open">Abrir</a></td>
             </tr>
             <tr>
               <td><strong>Indexa Capital</strong></td>
               <td><span class="tbl-score">9.0 ★</span></td>
               <td><span class="tbl-green">0.43% anual</span></td>
               <td>1.000€</td>
-              <td>Intermedio</td>
+              <td data-i18n="td.inter">Intermedio</td>
               <td>CNMV</td>
-              <td><a href="#indexa-afiliado" class="btn btn-primary btn-sm">6 meses gratis</a></td>
+              <td><a href="#indexa-afiliado" class="btn btn-primary btn-sm" data-i18n="tbl.6m">6 meses gratis</a></td>
             </tr>
             <tr>
               <td><strong>DEGIRO</strong></td>
               <td><span class="tbl-score">8.8 ★</span></td>
               <td><span class="tbl-green">Desde 0€ ETFs</span></td>
               <td>0€</td>
-              <td>Intermedio/Avanzado</td>
+              <td data-i18n="td.intadv">Intermedio/Avanzado</td>
               <td>BaFin/CNMV</td>
-              <td><a href="#degiro-afiliado" class="btn btn-primary btn-sm">Abrir</a></td>
+              <td><a href="#degiro-afiliado" class="btn btn-primary btn-sm" data-i18n="tbl.open">Abrir</a></td>
             </tr>
             <tr>
               <td><strong>Interactive Brokers</strong></td>
               <td><span class="tbl-score">8.5 ★</span></td>
               <td><span class="tbl-green">Desde 0€</span></td>
               <td>0€</td>
-              <td>Avanzado</td>
+              <td data-i18n="td.advanced">Avanzado</td>
               <td>SEC/FCA/CNMV</td>
-              <td><a href="#ib-afiliado" class="btn btn-primary btn-sm">Abrir</a></td>
+              <td><a href="#ib-afiliado" class="btn btn-primary btn-sm" data-i18n="tbl.open">Abrir</a></td>
             </tr>
             <tr>
               <td><strong>Finizens</strong></td>
               <td><span class="tbl-score">8.3 ★</span></td>
               <td><span class="tbl-green">Desde 0.12%</span></td>
               <td>50€</td>
-              <td>Principiante/Intermedio</td>
+              <td data-i18n="td.begint">Principiante/Intermedio</td>
               <td>CNMV</td>
-              <td><a href="#finizens-afiliado" class="btn btn-primary btn-sm">Empezar</a></td>
+              <td><a href="#finizens-afiliado" class="btn btn-primary btn-sm" data-i18n="tbl.start">Empezar</a></td>
             </tr>
             <tr>
               <td><strong>eToro</strong></td>
               <td><span class="tbl-score">7.8 ★</span></td>
               <td><span class="tbl-green">0% acciones</span></td>
               <td>50€</td>
-              <td>Principiante</td>
+              <td data-i18n="td.beginner">Principiante</td>
               <td>CySEC/FCA</td>
-              <td><a href="#etoro-afiliado" class="btn btn-primary btn-sm">Abrir</a></td>
+              <td><a href="#etoro-afiliado" class="btn btn-primary btn-sm" data-i18n="tbl.open">Abrir</a></td>
             </tr>
           </tbody>
         </table>
@@ -769,34 +767,34 @@
   <section class="section">
     <div class="container">
       <div class="section-header fi">
-        <h2 class="section-title">¿Cómo elegimos los brokers?</h2>
-        <p class="section-sub">Evaluamos cada broker con los mismos criterios objetivos para que puedas confiar en nuestros análisis.</p>
+        <h2 class="section-title" data-i18n="meth.title">¿Cómo elegimos los brokers?</h2>
+        <p class="section-sub" data-i18n="meth.sub">Evaluamos cada broker con los mismos criterios objetivos para que puedas confiar en nuestros análisis.</p>
       </div>
       <div class="method-grid">
         <div class="method-card fi">
           <div class="method-num">1️⃣</div>
-          <h3 class="method-title">Seguridad y regulación</h3>
-          <p class="method-desc">Verificamos que todos los brokers estén regulados por organismos reconocidos (CNMV, FCA, BaFin, SEC). La protección de tu dinero es lo primero.</p>
+          <h3 class="method-title" data-i18n="meth1.title">Seguridad y regulación</h3>
+          <p class="method-desc" data-i18n="meth1.desc">Verificamos que todos los brokers estén regulados por organismos reconocidos (CNMV, FCA, BaFin, SEC). La protección de tu dinero es lo primero.</p>
         </div>
         <div class="method-card fi d1">
           <div class="method-num">2️⃣</div>
-          <h3 class="method-title">Comisiones y costes</h3>
-          <p class="method-desc">Analizamos todas las comisiones, incluidas las ocultas: spreads, comisiones de inactividad, cambio de divisa y retiradas.</p>
+          <h3 class="method-title" data-i18n="meth2.title">Comisiones y costes</h3>
+          <p class="method-desc" data-i18n="meth2.desc">Analizamos todas las comisiones, incluidas las ocultas: spreads, comisiones de inactividad, cambio de divisa y retiradas.</p>
         </div>
         <div class="method-card fi d2">
           <div class="method-num">3️⃣</div>
-          <h3 class="method-title">Facilidad de uso</h3>
-          <p class="method-desc">Probamos la plataforma web y la app móvil. Valoramos la curva de aprendizaje, la claridad de la interfaz y la experiencia real del usuario.</p>
+          <h3 class="method-title" data-i18n="meth3.title">Facilidad de uso</h3>
+          <p class="method-desc" data-i18n="meth3.desc">Probamos la plataforma web y la app móvil. Valoramos la curva de aprendizaje, la claridad de la interfaz y la experiencia real del usuario.</p>
         </div>
         <div class="method-card fi">
           <div class="method-num">4️⃣</div>
-          <h3 class="method-title">Variedad de productos</h3>
-          <p class="method-desc">Evaluamos la gama de activos disponibles: acciones, ETFs, fondos, criptos, opciones y más.</p>
+          <h3 class="method-title" data-i18n="meth4.title">Variedad de productos</h3>
+          <p class="method-desc" data-i18n="meth4.desc">Evaluamos la gama de activos disponibles: acciones, ETFs, fondos, criptos, opciones y más.</p>
         </div>
         <div class="method-card fi d1">
           <div class="method-num">5️⃣</div>
-          <h3 class="method-title">Atención al cliente</h3>
-          <p class="method-desc">Contactamos con el equipo de soporte de cada broker para evaluar tiempos de respuesta y calidad de las respuestas.</p>
+          <h3 class="method-title" data-i18n="meth5.title">Atención al cliente</h3>
+          <p class="method-desc" data-i18n="meth5.desc">Contactamos con el equipo de soporte de cada broker para evaluar tiempos de respuesta y calidad de las respuestas.</p>
         </div>
       </div>
     </div>
@@ -812,9 +810,9 @@
 
   <section class="page-header">
     <div class="container">
-      <span class="page-header-eyebrow fi">📚 Educación financiera</span>
-      <h1 class="page-header-title fi">Guías para invertir en España</h1>
-      <p class="page-header-sub fi">Todo lo que necesitas saber para empezar a invertir de forma inteligente</p>
+      <span class="page-header-eyebrow fi" data-i18n="guides.eyebrow">📚 Educación financiera</span>
+      <h1 class="page-header-title fi" data-i18n="guides.title">Guías para invertir en España</h1>
+      <p class="page-header-sub fi" data-i18n="guides.sub">Todo lo que necesitas saber para empezar a invertir de forma inteligente</p>
     </div>
   </section>
 
@@ -824,74 +822,73 @@
 
         <article class="guide-card fi">
           <span class="guide-icon">📖</span>
-          <h2 class="guide-title">Cómo elegir tu primer broker</h2>
-          <p class="guide-desc">Paso a paso para abrir tu primera cuenta de inversión en España sin cometer los errores más comunes. Desde la regulación hasta las comisiones.</p>
+          <h2 class="guide-title" data-i18n="g1.title">Cómo elegir tu primer broker</h2>
+          <p class="guide-desc" data-i18n="g1.desc">Paso a paso para abrir tu primera cuenta de inversión en España sin cometer los errores más comunes. Desde la regulación hasta las comisiones.</p>
           <div class="guide-meta">
-            <span class="badge badge-green">Principiantes</span>
-            <span class="guide-time">⏱ 8 min lectura</span>
+            <span class="badge badge-green" data-i18n="g1.badge">Principiantes</span>
+            <span class="guide-time" data-i18n="g1.time">⏱ 8 min lectura</span>
           </div>
-          <a href="#" class="guide-link guide-modal-btn" data-guide="guia-1">Leer guía →</a>
+          <a href="#" class="guide-link guide-modal-btn" data-guide="guia-1" data-i18n="g1.link">Leer guía →</a>
         </article>
 
         <article class="guide-card fi d1">
           <span class="guide-icon">📈</span>
-          <h2 class="guide-title">Fondos indexados: guía completa</h2>
-          <p class="guide-desc">Qué son, cómo funcionan y por qué son la opción favorita de los inversores a largo plazo. Incluye los mejores fondos disponibles en España.</p>
+          <h2 class="guide-title" data-i18n="g2.title">Fondos indexados: guía completa</h2>
+          <p class="guide-desc" data-i18n="g2.desc">Qué son, cómo funcionan y por qué son la opción favorita de los inversores a largo plazo. Incluye los mejores fondos disponibles en España.</p>
           <div class="guide-meta">
-            <span class="badge badge-blue">Fondos</span>
-            <span class="guide-time">⏱ 12 min lectura</span>
+            <span class="badge badge-blue" data-i18n="g2.badge">Fondos</span>
+            <span class="guide-time" data-i18n="g2.time">⏱ 12 min lectura</span>
           </div>
-          <a href="#" class="guide-link guide-modal-btn" data-guide="guia-2">Leer guía →</a>
+          <a href="#" class="guide-link guide-modal-btn" data-guide="guia-2" data-i18n="g2.link">Leer guía →</a>
         </article>
 
         <article class="guide-card fi d2">
           <span class="guide-icon">💼</span>
-          <h2 class="guide-title">ETFs vs Fondos indexados</h2>
-          <p class="guide-desc">Diferencias clave en fiscalidad, liquidez y acceso. Descubre cuál de los dos encaja mejor con tu estrategia de inversión y horizonte temporal.</p>
+          <h2 class="guide-title" data-i18n="g3.title">ETFs vs Fondos indexados</h2>
+          <p class="guide-desc" data-i18n="g3.desc">Diferencias clave en fiscalidad, liquidez y acceso. Descubre cuál de los dos encaja mejor con tu estrategia de inversión y horizonte temporal.</p>
           <div class="guide-meta">
-            <span class="badge badge-orange">ETFs</span>
-            <span class="guide-time">⏱ 6 min lectura</span>
+            <span class="badge badge-orange" data-i18n="g3.badge">ETFs</span>
+            <span class="guide-time" data-i18n="g3.time">⏱ 6 min lectura</span>
           </div>
-          <a href="#" class="guide-link guide-modal-btn" data-guide="guia-2">Leer guía →</a>
+          <a href="#" class="guide-link guide-modal-btn" data-guide="guia-2" data-i18n="g3.link">Leer guía →</a>
         </article>
 
         <article class="guide-card fi">
           <span class="guide-icon">🧾</span>
-          <h2 class="guide-title">Cómo declarar inversiones en la renta</h2>
-          <p class="guide-desc">Todo sobre la tributación de acciones, fondos y ETFs en España. Cuándo pagar, cómo calcular ganancias y qué casillas rellenar.</p>
+          <h2 class="guide-title" data-i18n="g4.title">Cómo declarar inversiones en la renta</h2>
+          <p class="guide-desc" data-i18n="g4.desc">Todo sobre la tributación de acciones, fondos y ETFs en España. Cuándo pagar, cómo calcular ganancias y qué casillas rellenar.</p>
           <div class="guide-meta">
-            <span class="badge badge-red">Fiscalidad</span>
-            <span class="guide-time">⏱ 10 min lectura</span>
+            <span class="badge badge-red" data-i18n="g4.badge">Fiscalidad</span>
+            <span class="guide-time" data-i18n="g4.time">⏱ 10 min lectura</span>
           </div>
-          <a href="#" class="guide-link guide-modal-btn" data-guide="guia-4">Leer guía →</a>
+          <a href="#" class="guide-link guide-modal-btn" data-guide="guia-4" data-i18n="g4.link">Leer guía →</a>
         </article>
 
         <article class="guide-card fi d1">
           <span class="guide-icon">🌍</span>
-          <h2 class="guide-title">Cómo diversificar tu cartera</h2>
-          <p class="guide-desc">La regla de oro de la inversión explicada con ejemplos reales. Aprende a distribuir tu dinero para minimizar el riesgo sin sacrificar rentabilidad.</p>
+          <h2 class="guide-title" data-i18n="g5.title">Cómo diversificar tu cartera</h2>
+          <p class="guide-desc" data-i18n="g5.desc">La regla de oro de la inversión explicada con ejemplos reales. Aprende a distribuir tu dinero para minimizar el riesgo sin sacrificar rentabilidad.</p>
           <div class="guide-meta">
-            <span class="badge badge-purple">Estrategia</span>
-            <span class="guide-time">⏱ 7 min lectura</span>
+            <span class="badge badge-purple" data-i18n="g5.badge">Estrategia</span>
+            <span class="guide-time" data-i18n="g5.time">⏱ 7 min lectura</span>
           </div>
-          <a href="#" class="guide-link guide-modal-btn" data-guide="guia-5">Leer guía →</a>
+          <a href="#" class="guide-link guide-modal-btn" data-guide="guia-5" data-i18n="g5.link">Leer guía →</a>
         </article>
 
         <article class="guide-card fi d2">
           <span class="guide-icon">⏳</span>
-          <h2 class="guide-title">Estrategia Buy &amp; Hold explicada</h2>
-          <p class="guide-desc">La estrategia favorita de Warren Buffett aplicada al inversor español. Comprar y mantener: por qué funciona y cómo implementarla paso a paso.</p>
+          <h2 class="guide-title" data-i18n="g6.title">Estrategia Buy &amp; Hold explicada</h2>
+          <p class="guide-desc" data-i18n="g6.desc">La estrategia favorita de Warren Buffett aplicada al inversor español. Comprar y mantener: por qué funciona y cómo implementarla paso a paso.</p>
           <div class="guide-meta">
-            <span class="badge badge-emerald">Estrategia</span>
-            <span class="guide-time">⏱ 5 min lectura</span>
+            <span class="badge badge-emerald" data-i18n="g6.badge">Estrategia</span>
+            <span class="guide-time" data-i18n="g6.time">⏱ 5 min lectura</span>
           </div>
-          <a href="#" class="guide-link guide-modal-btn" data-guide="guia-6">Leer guía →</a>
+          <a href="#" class="guide-link guide-modal-btn" data-guide="guia-6" data-i18n="g6.link">Leer guía →</a>
         </article>
 
       </div>
     </div>
   </section>
-
 
 </section><!-- /guias -->
 
@@ -903,9 +900,9 @@
 
   <section class="page-header">
     <div class="container">
-      <span class="page-header-eyebrow fi">❓ Resolvemos tus dudas</span>
-      <h1 class="page-header-title fi">Preguntas frecuentes</h1>
-      <p class="page-header-sub fi">Resolvemos las dudas más comunes sobre brokers e inversión en España</p>
+      <span class="page-header-eyebrow fi" data-i18n="faq.eyebrow">❓ Resolvemos tus dudas</span>
+      <h1 class="page-header-title fi" data-i18n="faq.title">Preguntas frecuentes</h1>
+      <p class="page-header-sub fi" data-i18n="faq.sub">Resolvemos las dudas más comunes sobre brokers e inversión en España</p>
     </div>
   </section>
 
@@ -913,137 +910,134 @@
     <div class="container">
       <div class="faq-container">
 
-        <!-- Categoría 1: Brokers -->
         <div class="faq-category fi">
-          <div class="faq-cat-title">🏦 Sobre Brokers</div>
+          <div class="faq-cat-title" data-i18n="faq.cat1">🏦 Sobre Brokers</div>
 
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">
-              ¿Son seguros estos brokers?
+              <span data-i18n="faq.q1">¿Son seguros estos brokers?</span>
               <span class="faq-q-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-a" role="region">
-              <div class="faq-a-inner">Sí. Todos los brokers de nuestra comparativa están regulados por organismos oficiales como la CNMV en España o equivalentes europeos (MiFID II). Tu dinero está protegido hasta 100.000€ por el Fondo de Garantía de Inversores (FOGAIN) en caso de insolvencia del broker.</div>
+              <div class="faq-a-inner" data-i18n="faq.a1">Sí. Todos los brokers de nuestra comparativa están regulados por organismos oficiales como la CNMV en España o equivalentes europeos (MiFID II). Tu dinero está protegido hasta 100.000€ por el Fondo de Garantía de Inversores (FOGAIN) en caso de insolvencia del broker.</div>
             </div>
           </div>
 
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">
-              ¿Cuánto dinero necesito para empezar a invertir?
+              <span data-i18n="faq.q2">¿Cuánto dinero necesito para empezar a invertir?</span>
               <span class="faq-q-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-a" role="region">
-              <div class="faq-a-inner">Puedes empezar con tan solo 1€ en brokers como MyInvestor. La clave no es el capital inicial, sino la constancia. Muchos inversores de éxito empezaron con 50-100€ al mes y fueron aumentando gradualmente.</div>
+              <div class="faq-a-inner" data-i18n="faq.a2">Puedes empezar con tan solo 1€ en brokers como MyInvestor. La clave no es el capital inicial, sino la constancia. Muchos inversores de éxito empezaron con 50-100€ al mes y fueron aumentando gradualmente.</div>
             </div>
           </div>
 
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">
-              ¿Qué diferencia hay entre un broker y un roboadvisor?
+              <span data-i18n="faq.q3">¿Qué diferencia hay entre un broker y un roboadvisor?</span>
               <span class="faq-q-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-a" role="region">
-              <div class="faq-a-inner">Un broker te permite comprar y vender activos financieros tú mismo (acciones, ETFs, fondos). Un roboadvisor gestiona tu cartera automáticamente según tu perfil de riesgo, sin que tengas que tomar decisiones. Los roboadvisores son ideales para inversores que prefieren una estrategia "set and forget".</div>
+              <div class="faq-a-inner" data-i18n="faq.a3">Un broker te permite comprar y vender activos financieros tú mismo (acciones, ETFs, fondos). Un roboadvisor gestiona tu cartera automáticamente según tu perfil de riesgo, sin que tengas que tomar decisiones. Los roboadvisores son ideales para inversores que prefieren una estrategia "set and forget".</div>
             </div>
           </div>
 
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">
-              ¿Puedo tener varios brokers a la vez?
+              <span data-i18n="faq.q4">¿Puedo tener varios brokers a la vez?</span>
               <span class="faq-q-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-a" role="region">
-              <div class="faq-a-inner">Sí, es completamente legal y habitual. Muchos inversores españoles tienen MyInvestor para fondos indexados sin comisión, y DEGIRO para operar con ETFs. Cada broker declara tus operaciones de forma independiente y recibirás un informe fiscal de cada uno a principios de año.</div>
+              <div class="faq-a-inner" data-i18n="faq.a4">Sí, es completamente legal y habitual. Muchos inversores españoles tienen MyInvestor para fondos indexados sin comisión, y DEGIRO para operar con ETFs. Cada broker declara tus operaciones de forma independiente y recibirás un informe fiscal de cada uno a principios de año.</div>
             </div>
           </div>
         </div>
 
-        <!-- Categoría 2: Inversión -->
         <div class="faq-category fi">
-          <div class="faq-cat-title">📈 Sobre Inversión</div>
+          <div class="faq-cat-title" data-i18n="faq.cat2">📈 Sobre Inversión</div>
 
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">
-              ¿Puedo perder todo mi dinero invirtiendo?
+              <span data-i18n="faq.q5">¿Puedo perder todo mi dinero invirtiendo?</span>
               <span class="faq-q-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-a" role="region">
-              <div class="faq-a-inner">En fondos indexados diversificados globalmente es prácticamente imposible perderlo todo, ya que requeriría la quiebra simultánea de miles de empresas en todo el mundo. Sin embargo, sí puedes perder parte de tu inversión a corto plazo. Invertir en acciones individuales o productos apalancados conlleva un riesgo mucho mayor.</div>
+              <div class="faq-a-inner" data-i18n="faq.a5">En fondos indexados diversificados globalmente es prácticamente imposible perderlo todo, ya que requeriría la quiebra simultánea de miles de empresas en todo el mundo. Sin embargo, sí puedes perder parte de tu inversión a corto plazo. Invertir en acciones individuales o productos apalancados conlleva un riesgo mucho mayor.</div>
             </div>
           </div>
 
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">
-              ¿Qué son los fondos indexados?
+              <span data-i18n="faq.q6">¿Qué son los fondos indexados?</span>
               <span class="faq-q-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-a" role="region">
-              <div class="faq-a-inner">Los fondos indexados son fondos de inversión que replican automáticamente un índice bursátil, como el S&amp;P 500 (las 500 mayores empresas de EE.UU.) o el MSCI World (empresas de todo el mundo). Al invertir en un fondo indexado, inviertes en todas las empresas del índice a la vez, logrando una diversificación muy amplia con comisiones muy bajas.</div>
+              <div class="faq-a-inner" data-i18n="faq.a6">Los fondos indexados son fondos de inversión que replican automáticamente un índice bursátil, como el S&amp;P 500 (las 500 mayores empresas de EE.UU.) o el MSCI World (empresas de todo el mundo). Al invertir en un fondo indexado, inviertes en todas las empresas del índice a la vez, logrando una diversificación muy amplia con comisiones muy bajas.</div>
             </div>
           </div>
 
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">
-              ¿Qué es un ETF y cómo funciona?
+              <span data-i18n="faq.q7">¿Qué es un ETF y cómo funciona?</span>
               <span class="faq-q-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-a" role="region">
-              <div class="faq-a-inner">Un ETF (Exchange Traded Fund) es similar a un fondo indexado pero cotiza en bolsa como si fuera una acción, lo que permite comprarlo y venderlo en cualquier momento del día. En España, los ETFs tienen una fiscalidad diferente a los fondos indexados: no puedes hacer traspasos sin tributar, pero suelen tener comisiones aún más bajas.</div>
+              <div class="faq-a-inner" data-i18n="faq.a7">Un ETF (Exchange Traded Fund) es similar a un fondo indexado pero cotiza en bolsa como si fuera una acción, lo que permite comprarlo y venderlo en cualquier momento del día. En España, los ETFs tienen una fiscalidad diferente a los fondos indexados: no puedes hacer traspasos sin tributar, pero suelen tener comisiones aún más bajas.</div>
             </div>
           </div>
 
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">
-              ¿Cuánto tiempo necesito para ver resultados?
+              <span data-i18n="faq.q8">¿Cuánto tiempo necesito para ver resultados?</span>
               <span class="faq-q-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-a" role="region">
-              <div class="faq-a-inner">La inversión en fondos indexados está diseñada para el largo plazo (mínimo 5-10 años). A corto plazo el mercado puede bajar, pero históricamente siempre ha subido a largo plazo. El S&amp;P 500 ha dado una rentabilidad media anual de aproximadamente el 10% en los últimos 100 años.</div>
+              <div class="faq-a-inner" data-i18n="faq.a8">La inversión en fondos indexados está diseñada para el largo plazo (mínimo 5-10 años). A corto plazo el mercado puede bajar, pero históricamente siempre ha subido a largo plazo. El S&amp;P 500 ha dado una rentabilidad media anual de aproximadamente el 10% en los últimos 100 años.</div>
             </div>
           </div>
         </div>
 
-        <!-- Categoría 3: BrokerCompass -->
         <div class="faq-category fi">
-          <div class="faq-cat-title">🧭 Sobre BrokerCompass</div>
+          <div class="faq-cat-title" data-i18n="faq.cat3">🧭 Sobre BrokerCompass</div>
 
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">
-              ¿Cómo gana dinero BrokerCompass?
+              <span data-i18n="faq.q9">¿Cómo gana dinero BrokerCompass?</span>
               <span class="faq-q-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-a" role="region">
-              <div class="faq-a-inner">Recibimos comisiones cuando un usuario abre una cuenta a través de nuestros enlaces de afiliado. Esto no supone ningún coste adicional para ti. Sin embargo, este modelo de negocio NO afecta a nuestras puntuaciones ni al orden de los brokers, que se determina exclusivamente por nuestro análisis independiente.</div>
+              <div class="faq-a-inner" data-i18n="faq.a9">Recibimos comisiones cuando un usuario abre una cuenta a través de nuestros enlaces de afiliado. Esto no supone ningún coste adicional para ti. Sin embargo, este modelo de negocio NO afecta a nuestras puntuaciones ni al orden de los brokers, que se determina exclusivamente por nuestro análisis independiente.</div>
             </div>
           </div>
 
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">
-              ¿Son objetivas vuestras comparativas?
+              <span data-i18n="faq.q10">¿Son objetivas vuestras comparativas?</span>
               <span class="faq-q-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-a" role="region">
-              <div class="faq-a-inner">Sí. El ranking lo determina exclusivamente nuestro análisis basado en comisiones, seguridad y regulación, facilidad de uso, variedad de productos y atención al cliente. Si un broker tiene mejores condiciones, sube en el ranking aunque no tengamos acuerdo de afiliación con él.</div>
+              <div class="faq-a-inner" data-i18n="faq.a10">Sí. El ranking lo determina exclusivamente nuestro análisis basado en comisiones, seguridad y regulación, facilidad de uso, variedad de productos y atención al cliente. Si un broker tiene mejores condiciones, sube en el ranking aunque no tengamos acuerdo de afiliación con él.</div>
             </div>
           </div>
 
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">
-              ¿Con qué frecuencia actualizáis la información?
+              <span data-i18n="faq.q11">¿Con qué frecuencia actualizáis la información?</span>
               <span class="faq-q-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-a" role="region">
-              <div class="faq-a-inner">Revisamos las condiciones de cada broker al menos una vez al mes. Si un broker cambia sus comisiones o condiciones de forma relevante, actualizamos la información de inmediato. En la parte superior de cada página indicamos la fecha de la última actualización.</div>
+              <div class="faq-a-inner" data-i18n="faq.a11">Revisamos las condiciones de cada broker al menos una vez al mes. Si un broker cambia sus comisiones o condiciones de forma relevante, actualizamos la información de inmediato. En la parte superior de cada página indicamos la fecha de la última actualización.</div>
             </div>
           </div>
 
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">
-              ¿Puedo sugerir un broker para analizar?
+              <span data-i18n="faq.q12">¿Puedo sugerir un broker para analizar?</span>
               <span class="faq-q-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-a" role="region">
-              <div class="faq-a-inner">¡Por supuesto! Escríbenos a través de nuestro <a href="#contacto" data-page="contacto" style="color:#00d4aa;">formulario de contacto</a> indicando el nombre del broker que te gustaría que analizáramos. Evaluamos todas las sugerencias y añadimos nuevos brokers cuando cumplen nuestros criterios de calidad y seguridad.</div>
+              <div class="faq-a-inner" data-i18n="faq.a12">¡Por supuesto! Escríbenos a través de nuestro formulario de contacto indicando el nombre del broker que te gustaría que analizáramos. Evaluamos todas las sugerencias y añadimos nuevos brokers cuando cumplen nuestros criterios de calidad y seguridad.</div>
             </div>
           </div>
         </div>
@@ -1052,13 +1046,12 @@
     </div>
   </section>
 
-  <!-- CTA comparativa -->
   <section class="section section-alt">
     <div class="container">
       <div class="text-center fi">
-        <h2 class="section-title" style="margin-bottom:12px;">¿Listo para elegir tu broker?</h2>
-        <p class="section-sub" style="margin-bottom:28px;">Consulta nuestra comparativa completa y encuentra el que mejor se adapta a ti</p>
-        <a href="#comparativa" data-page="comparativa" class="btn btn-primary btn-lg">Ver comparativa completa →</a>
+        <h2 class="section-title" style="margin-bottom:12px;" data-i18n="faq.cta.title">¿Listo para elegir tu broker?</h2>
+        <p class="section-sub" style="margin-bottom:28px;" data-i18n="faq.cta.sub">Consulta nuestra comparativa completa y encuentra el que mejor se adapta a ti</p>
+        <a href="#comparativa" data-page="comparativa" class="btn btn-primary btn-lg" data-i18n="faq.cta.btn">Ver comparativa completa →</a>
       </div>
     </div>
   </section>
@@ -1074,9 +1067,9 @@
   <section class="page-hero">
     <div class="container">
       <div class="page-hero-inner">
-        <span class="eyebrow">📬 Estamos aquí para ayudarte</span>
-        <h1 class="page-hero-title fi">Contacta con BrokerCompass</h1>
-        <p class="page-hero-sub fi">¿Tienes alguna duda o sugerencia? Escríbenos. Respondemos en menos de 48 horas.</p>
+        <span class="eyebrow" data-i18n="ct.eyebrow">📬 Estamos aquí para ayudarte</span>
+        <h1 class="page-hero-title fi" data-i18n="ct.title">Contacta con BrokerCompass</h1>
+        <p class="page-hero-sub fi" data-i18n="ct.sub">¿Tienes alguna duda o sugerencia? Escríbenos. Respondemos en menos de 48 horas.</p>
       </div>
     </div>
   </section>
@@ -1085,80 +1078,77 @@
     <div class="container">
       <div class="contact-layout">
 
-        <!-- Formulario -->
         <div class="contact-box fi">
-          <h2 class="contact-form-title">Envíanos un mensaje</h2>
+          <h2 class="contact-form-title" data-i18n="ct.form.title">Envíanos un mensaje</h2>
           <form class="contact-form" id="contactForm" novalidate>
 
             <div class="form-group">
-              <label class="form-label" for="contactNombre">Nombre completo <span class="form-required">*</span></label>
-              <input type="text" class="form-input" id="contactNombre" name="nombre" placeholder="Tu nombre" required autocomplete="name">
+              <label class="form-label" for="contactNombre"><span data-i18n="ct.name.label">Nombre completo</span> <span class="form-required">*</span></label>
+              <input type="text" class="form-input" id="contactNombre" name="nombre" placeholder="Tu nombre" required autocomplete="name" data-i18n-ph="ct.name.ph">
               <span class="form-error" id="errorNombre"></span>
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="contactEmail">Email <span class="form-required">*</span></label>
+              <label class="form-label" for="contactEmail"><span data-i18n="ct.email.label">Email</span> <span class="form-required">*</span></label>
               <input type="email" class="form-input" id="contactEmail" name="email" placeholder="tunombre@gmail.com" required autocomplete="email">
               <span class="form-error" id="errorEmail"></span>
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="contactAsunto">Asunto <span class="form-required">*</span></label>
+              <label class="form-label" for="contactAsunto"><span data-i18n="ct.subj.label">Asunto</span> <span class="form-required">*</span></label>
               <select class="form-input form-select" id="contactAsunto" name="asunto" required>
-                <option value="" disabled selected>Selecciona un asunto…</option>
-                <option value="consulta">Consulta general</option>
-                <option value="sugerir">Sugerir un broker</option>
-                <option value="error">Reportar un error</option>
-                <option value="colaboracion">Colaboración</option>
-                <option value="otro">Otro</option>
+                <option value="" disabled selected data-i18n="ct.subj.ph">Selecciona un asunto…</option>
+                <option value="consulta"     data-i18n="ct.subj.opt1">Consulta general</option>
+                <option value="sugerir"      data-i18n="ct.subj.opt2">Sugerir un broker</option>
+                <option value="error"        data-i18n="ct.subj.opt3">Reportar un error</option>
+                <option value="colaboracion" data-i18n="ct.subj.opt4">Colaboración</option>
+                <option value="otro"         data-i18n="ct.subj.opt5">Otro</option>
               </select>
               <span class="form-error" id="errorAsunto"></span>
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="contactMensaje">Mensaje <span class="form-required">*</span></label>
-              <textarea class="form-input form-textarea" id="contactMensaje" name="mensaje" rows="6" placeholder="Escribe tu mensaje aquí (mínimo 20 caracteres)…" required></textarea>
+              <label class="form-label" for="contactMensaje"><span data-i18n="ct.msg.label">Mensaje</span> <span class="form-required">*</span></label>
+              <textarea class="form-input form-textarea" id="contactMensaje" name="mensaje" rows="6" placeholder="Escribe tu mensaje aquí (mínimo 20 caracteres)…" required data-i18n-ph="ct.msg.ph"></textarea>
               <span class="form-error" id="errorMensaje"></span>
             </div>
 
-            <button type="submit" class="btn btn-primary contact-submit">Enviar mensaje →</button>
+            <button type="submit" class="btn btn-primary contact-submit" data-i18n="ct.submit">Enviar mensaje →</button>
           </form>
 
-          <!-- Mensaje de éxito -->
           <div class="contact-ok" id="contactOk" style="display:none;" role="alert">
             <div class="contact-ok-icon">✓</div>
             <div class="contact-ok-text">
-              <strong>¡Mensaje enviado!</strong>
-              <p>Te respondemos en menos de 48 horas.</p>
+              <strong data-i18n="ct.ok.strong">¡Mensaje enviado!</strong>
+              <p data-i18n="ct.ok.sub">Te respondemos en menos de 48 horas.</p>
             </div>
           </div>
         </div>
 
-        <!-- Info lateral -->
         <aside class="contact-info-wrap fi">
 
           <div class="contact-info-card">
-            <h3 class="contact-info-card-title">Información de contacto</h3>
+            <h3 class="contact-info-card-title" data-i18n="ct.info.title">Información de contacto</h3>
             <ul class="contact-info-list" role="list">
               <li class="contact-info-item">
                 <span class="contact-info-ico">⏱</span>
                 <div>
-                  <span class="contact-info-label">Respuesta</span>
-                  <span class="contact-info-value">Menos de 48 horas</span>
+                  <span class="contact-info-label" data-i18n="ct.resp.label">Respuesta</span>
+                  <span class="contact-info-value" data-i18n="ct.resp.value">Menos de 48 horas</span>
                 </div>
               </li>
               <li class="contact-info-item">
                 <span class="contact-info-ico">📍</span>
                 <div>
-                  <span class="contact-info-label">Ubicación</span>
-                  <span class="contact-info-value">España</span>
+                  <span class="contact-info-label" data-i18n="ct.loc.label">Ubicación</span>
+                  <span class="contact-info-value" data-i18n="ct.loc.value">España</span>
                 </div>
               </li>
             </ul>
           </div>
 
           <div class="contact-info-card">
-            <h3 class="contact-info-card-title">Síguenos</h3>
+            <h3 class="contact-info-card-title" data-i18n="ct.social.title">Síguenos</h3>
             <div class="social-links">
               <a href="https://www.instagram.com/viikttor10/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
@@ -1168,9 +1158,9 @@
           </div>
 
           <div class="contact-info-card">
-            <h3 class="contact-info-card-title">Preguntas frecuentes</h3>
-            <p class="contact-faq-desc">¿Tienes dudas sobre inversión? Quizás ya tenemos la respuesta.</p>
-            <a href="#faq" data-page="faq" class="btn btn-secondary">Ver FAQ →</a>
+            <h3 class="contact-info-card-title" data-i18n="ct.faq.title">Preguntas frecuentes</h3>
+            <p class="contact-faq-desc" data-i18n="ct.faq.desc">¿Tienes dudas sobre inversión? Quizás ya tenemos la respuesta.</p>
+            <a href="#faq" data-page="faq" class="btn btn-secondary" data-i18n="ct.faq.btn">Ver FAQ →</a>
           </div>
 
         </aside>
@@ -1197,7 +1187,6 @@
   <section class="section">
     <div class="container" style="max-width:860px;">
 
-      <!-- Nav interna -->
       <nav class="legal-nav fi" aria-label="Secciones legales">
         <a href="#sobre">Sobre nosotros</a>
         <a href="#aviso-legal">Aviso legal</a>
@@ -1206,7 +1195,6 @@
         <a href="#metodologia">Metodología</a>
       </nav>
 
-      <!-- Sobre nosotros -->
       <div class="legal-section fi" id="sobre">
         <h2>Sobre nosotros</h2>
         <span class="legal-meta">Última actualización: mayo 2026</span>
@@ -1216,7 +1204,6 @@
         <p>📧 <a href="mailto:hola@brokercompass.es">hola@brokercompass.es</a> — Respondemos en menos de 48 horas.</p>
       </div>
 
-      <!-- Aviso Legal -->
       <div class="legal-section fi" id="aviso-legal">
         <h2>Aviso Legal</h2>
         <span class="legal-meta">Última actualización: mayo 2026</span>
@@ -1232,7 +1219,6 @@
         <p>Este aviso legal se rige por la legislación española. Para cualquier controversia, las partes se someten a los juzgados y tribunales competentes de España.</p>
       </div>
 
-      <!-- Política de Privacidad -->
       <div class="legal-section fi" id="privacidad">
         <h2>Política de Privacidad</h2>
         <span class="legal-meta">Última actualización: mayo 2026 · RGPD compliant</span>
@@ -1244,23 +1230,22 @@
           <li>No recogemos datos de navegación ni usamos cookies de seguimiento propias.</li>
         </ul>
         <h3>Finalidad y base legal</h3>
-        <p>Los datos se tratan exclusivamente para el envío del newsletter de BrokerCompass. La base legal es el <strong>consentimiento explícito del usuario</strong> (RGPD art. 6.1.a). La suscripción es siempre voluntaria.</p>
+        <p>Los datos se tratan exclusivamente para el envío del newsletter de BrokerCompass. La base legal es el <strong>consentimiento explícito del usuario</strong> (RGPD art. 6.1.a).</p>
         <h3>Conservación</h3>
         <p>Los datos se conservan hasta que el usuario solicita la baja o ejerce su derecho de supresión.</p>
         <h3>Tus derechos</h3>
-        <p>Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, portabilidad y limitación del tratamiento escribiendo a <a href="mailto:hola@brokercompass.es">hola@brokercompass.es</a>. Tienes derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es" target="_blank" rel="noopener">aepd.es</a>).</p>
+        <p>Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, portabilidad y limitación del tratamiento escribiendo a <a href="mailto:hola@brokercompass.es">hola@brokercompass.es</a>.</p>
         <h3>Terceros</h3>
-        <p>No cedemos datos a terceros salvo obligación legal. Los enlaces de afiliado redirigen a los sitios de los brokers, que tienen sus propias políticas de privacidad.</p>
+        <p>No cedemos datos a terceros salvo obligación legal.</p>
       </div>
 
-      <!-- Política de Cookies -->
       <div class="legal-section fi" id="cookies">
         <h2>Política de Cookies</h2>
         <span class="legal-meta">Última actualización: mayo 2026</span>
-        <p>Una cookie es un pequeño archivo que se almacena en tu navegador cuando visitas un sitio web. BrokerCompass usa exclusivamente cookies técnicas estrictamente necesarias para el funcionamiento del sitio.</p>
+        <p>BrokerCompass usa exclusivamente cookies técnicas estrictamente necesarias para el funcionamiento del sitio.</p>
         <h3>Cookies que usamos</h3>
         <ul>
-          <li><strong>bc_cookies</strong> (localStorage): guarda si el usuario ha aceptado el banner de cookies. Duración: indefinida hasta que el usuario limpia el almacenamiento.</li>
+          <li><strong>bc_cookies</strong> (localStorage): guarda si el usuario ha aceptado el banner de cookies.</li>
         </ul>
         <h3>Lo que no hacemos</h3>
         <ul>
@@ -1268,10 +1253,9 @@
           <li>No compartimos datos de comportamiento con terceros.</li>
         </ul>
         <h3>Cómo gestionar las cookies</h3>
-        <p>Puedes eliminar o bloquear las cookies desde la configuración de tu navegador: <strong>Ajustes → Privacidad → Cookies</strong>. Ten en cuenta que bloquear ciertas cookies puede afectar al funcionamiento del sitio.</p>
+        <p>Puedes eliminar o bloquear las cookies desde la configuración de tu navegador: <strong>Ajustes → Privacidad → Cookies</strong>.</p>
       </div>
 
-      <!-- Metodología -->
       <div class="legal-section fi" id="metodologia">
         <h2>Metodología de análisis</h2>
         <span class="legal-meta">Última actualización: mayo 2026</span>
@@ -1284,15 +1268,8 @@
           <div class="method-score-item"><strong>15%</strong><span>Atención al cliente</span></div>
           <div class="method-score-item"><strong>10%</strong><span>Variedad de productos</span></div>
         </div>
-        <h3>Proceso de análisis</h3>
-        <ul>
-          <li>Abrimos y probamos cada broker con dinero real cuando es posible.</li>
-          <li>Revisamos las condiciones (comisiones, términos) al menos una vez al mes.</li>
-          <li>Si un broker cambia sus condiciones, actualizamos el análisis en 72 horas.</li>
-          <li>Los análisis los realizan personas con experiencia en inversión, no bots.</li>
-        </ul>
         <h3>Comisiones de afiliado</h3>
-        <p>Podemos recibir una comisión cuando un usuario abre una cuenta a través de nuestros enlaces. Esto <strong>no afecta a la puntuación</strong> ni al orden del ranking. Si un broker sin acuerdo de afiliación tiene mejores condiciones, aparecerá más arriba.</p>
+        <p>Podemos recibir una comisión cuando un usuario abre una cuenta a través de nuestros enlaces. Esto <strong>no afecta a la puntuación</strong> ni al orden del ranking.</p>
         <p>¿Tienes dudas sobre nuestra metodología? Escríbenos a <a href="mailto:hola@brokercompass.es">hola@brokercompass.es</a>.</p>
       </div>
 
@@ -1303,7 +1280,7 @@
 
 
 <!-- ═══════════════════════════════════════════
-     FOOTER (compartido)
+     FOOTER
 ═══════════════════════════════════════════ -->
 <footer class="footer">
   <div class="container">
@@ -1318,25 +1295,25 @@
           </svg>
           Broker<em>Compass</em>
         </a>
-        <p class="footer-desc">Comparativa independiente de brokers de inversión para el mercado español, actualizada cada mes.</p>
+        <p class="footer-desc" data-i18n="ft.desc">Comparativa independiente de brokers de inversión para el mercado español, actualizada cada mes.</p>
       </div>
       <div>
-        <div class="footer-col-title">Páginas</div>
+        <div class="footer-col-title" data-i18n="ft.pages">Páginas</div>
         <nav class="footer-col-links">
-          <a href="#inicio"      data-page="inicio">Inicio</a>
-          <a href="#comparativa" data-page="comparativa">Comparativa</a>
-          <a href="#guias"       data-page="guias">Guías</a>
+          <a href="#inicio"      data-page="inicio"      data-i18n="nav.home">Inicio</a>
+          <a href="#comparativa" data-page="comparativa" data-i18n="nav.comparison">Comparativa</a>
+          <a href="#guias"       data-page="guias"       data-i18n="nav.guides">Guías</a>
           <a href="#faq"         data-page="faq">FAQ</a>
-          <a href="#contacto"    data-page="contacto">Contacto</a>
+          <a href="#contacto"    data-page="contacto"    data-i18n="nav.contact">Contacto</a>
         </nav>
       </div>
       <div>
-        <div class="footer-col-title">Legal</div>
+        <div class="footer-col-title" data-i18n="ft.legal">Legal</div>
         <nav class="footer-col-links">
-          <a href="#legal" data-page="legal" data-section="sobre">Sobre nosotros</a>
-          <a href="#legal" data-page="legal" data-section="metodologia">Metodología</a>
-          <a href="#legal" data-page="legal" data-section="privacidad">Política de privacidad</a>
-          <a href="#legal" data-page="legal" data-section="cookies">Política de cookies</a>
+          <a href="#legal" data-page="legal" data-section="sobre"       data-i18n="ft.about">Sobre nosotros</a>
+          <a href="#legal" data-page="legal" data-section="metodologia" data-i18n="ft.method">Metodología</a>
+          <a href="#legal" data-page="legal" data-section="privacidad"  data-i18n="ft.privacy">Política de privacidad</a>
+          <a href="#legal" data-page="legal" data-section="cookies"     data-i18n="ft.cookies">Política de cookies</a>
         </nav>
       </div>
     </div>
@@ -1354,18 +1331,18 @@
 
 <!-- Banner de cookies -->
 <div class="cookie-banner" id="cookieBanner" role="dialog">
-  <p class="cookie-text">🍪 Usamos cookies para mejorar tu experiencia. <a href="#legal" data-page="legal" data-section="cookies">Política de cookies</a>.</p>
+  <p class="cookie-text"><span data-i18n="ck.text">🍪 Usamos cookies para mejorar tu experiencia.</span> <a href="#legal" data-page="legal" data-section="cookies" data-i18n="ck.policy">Política de cookies</a>.</p>
   <div class="cookie-btns">
-    <button class="btn btn-primary btn-sm" id="cookieAccept">Aceptar</button>
-    <button class="btn btn-secondary btn-sm" id="cookieInfo">Más info</button>
+    <button class="btn btn-primary btn-sm" id="cookieAccept" data-i18n="ck.accept">Aceptar</button>
+    <button class="btn btn-secondary btn-sm" id="cookieInfo" data-i18n="ck.info">Más info</button>
   </div>
 </div>
 
-<!-- Toast de notificación global -->
+<!-- Toast -->
 <div class="toast" id="toast" aria-live="polite"></div>
 
 <!-- Modal de guías -->
-<div class="modal-overlay notranslate" id="modalOverlay" role="dialog" aria-modal="true" aria-label="Guía de inversión">
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-label="Guía de inversión">
   <div class="modal-box">
     <button class="modal-close" id="modalClose" aria-label="Cerrar">✕</button>
     <span class="modal-tag"></span>
@@ -1378,19 +1355,6 @@
     </div>
   </div>
 </div>
-
-<!-- Google Translate -->
-<div id="google_translate_element" style="position:absolute;top:-9999px;left:-9999px;width:1px;height:1px;overflow:hidden;"></div>
-<script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'es',
-    includedLanguages: 'en',
-    autoDisplay: false
-  }, 'google_translate_element');
-}
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script src="main.js"></script>
 </body>
