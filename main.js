@@ -731,7 +731,7 @@ document.addEventListener('DOMContentLoaded', () => {
     translateBtn.addEventListener('click', () => {
       translated = !translated;
       translateBtn.classList.toggle('active', translated);
-      translateBtn.textContent = translated ? '🌐 ES' : '🌐 ES/EN';
+      translateBtn.textContent = translated ? '🌐 Español' : '🌐 English';
       applyTranslation(translated);
     });
   }
