@@ -1125,6 +1125,31 @@ a:focus-visible {
   text-align: center;
 }
 
+.broker-referral-steps {
+  margin: 14px 0 4px;
+  background: linear-gradient(135deg, rgba(200,245,0,0.07), rgba(200,245,0,0.03));
+  border: 1px solid rgba(200,245,0,0.25);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.referral-steps-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.referral-steps-list {
+  margin: 0;
+  padding-left: 18px;
+}
+.referral-steps-list li {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+.referral-steps-list li:last-child { margin-bottom: 0; }
+
 /* ================================================================
    18. COMPARISON TABLE
    ================================================================ */
