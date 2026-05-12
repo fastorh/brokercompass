@@ -1300,4 +1300,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Tracking de afiliados
+  document.addEventListener('click', (e) => {
+    const affiliateBtn = e.target.closest('[data-affiliate]');
+    if (affiliateBtn) {
+      const broker = affiliateBtn.dataset.affiliate;
+      if (window.AffiliateSystem) {
+        window.AffiliateSystem.redirectToBroker(broker, 'comparativa');
+      }
+    }
+  });
+
 });

@@ -32,7 +32,10 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</noscript>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -392,7 +395,7 @@
             </div>
           </div>
           <div class="broker-card-footer">
-            <a href="#afiliado-myinvestor" class="btn btn-primary" data-tooltip="Enlace de afiliado · sin coste para ti" data-i18n="mi.cta">Abrir cuenta gratis →</a>
+            <a href="javascript:void(0)" data-affiliate="myinvestor" class="btn btn-primary" data-tooltip="Enlace de afiliado · sin coste para ti" data-i18n="mi.cta">Abrir cuenta gratis →</a>
             <span class="broker-regulated" data-i18n="mi.regulated">🔒 Regulado CNMV</span>
           </div>
           <p class="broker-note" data-i18n="mi.note">* Enlace de afiliado — sin coste para ti</p>
@@ -448,7 +451,7 @@
             </div>
           </div>
           <div class="broker-card-footer">
-            <a href="#afiliado-indexa" class="btn btn-primary" data-tooltip="Enlace de afiliado · sin coste para ti" data-i18n="ic.cta">Probar gratis 6 meses →</a>
+            <a href="javascript:void(0)" data-affiliate="indexa" class="btn btn-primary" data-tooltip="Enlace de afiliado · sin coste para ti" data-i18n="ic.cta">Probar gratis 6 meses →</a>
             <span class="broker-regulated" data-i18n="ic.regulated">🔒 Regulado CNMV</span>
           </div>
           <p class="broker-note" data-i18n="ic.note">* Enlace de afiliado — sin coste para ti</p>
@@ -504,7 +507,7 @@
             </div>
           </div>
           <div class="broker-card-footer">
-            <a href="#afiliado-degiro" class="btn btn-primary" data-tooltip="Enlace de afiliado · sin coste para ti" data-i18n="de.cta">Abrir cuenta →</a>
+            <a href="javascript:void(0)" data-affiliate="degiro" class="btn btn-primary" data-tooltip="Enlace de afiliado · sin coste para ti" data-i18n="de.cta">Abrir cuenta →</a>
             <span class="broker-regulated" data-i18n="de.regulated">🔒 Regulado BaFin / CNMV</span>
           </div>
           <p class="broker-note" data-i18n="de.note">* Enlace de afiliado — sin coste para ti</p>
@@ -560,7 +563,7 @@
             </div>
           </div>
           <div class="broker-card-footer">
-            <a href="#afiliado-ib" class="btn btn-primary" data-tooltip="Enlace de afiliado · sin coste para ti" data-i18n="ib.cta">Abrir cuenta →</a>
+            <a href="javascript:void(0)" data-affiliate="interactive" class="btn btn-primary" data-tooltip="Enlace de afiliado · sin coste para ti" data-i18n="ib.cta">Abrir cuenta →</a>
             <span class="broker-regulated" data-i18n="ib.regulated">🔒 Regulado SEC / FCA / CNMV</span>
           </div>
           <p class="broker-note" data-i18n="ib.note">* Enlace de afiliado — sin coste para ti</p>
@@ -616,7 +619,7 @@
             </div>
           </div>
           <div class="broker-card-footer">
-            <a href="#afiliado-finizens" class="btn btn-primary" data-tooltip="Enlace de afiliado · sin coste para ti" data-i18n="fz.cta">Empezar →</a>
+            <a href="javascript:void(0)" data-affiliate="finizens" class="btn btn-primary" data-tooltip="Enlace de afiliado · sin coste para ti" data-i18n="fz.cta">Empezar →</a>
             <span class="broker-regulated" data-i18n="fz.regulated">🔒 Regulado CNMV</span>
           </div>
           <p class="broker-note" data-i18n="fz.note">* Enlace de afiliado — sin coste para ti</p>
@@ -672,7 +675,7 @@
             </div>
           </div>
           <div class="broker-card-footer">
-            <a href="#afiliado-etoro" class="btn btn-primary" data-tooltip="Enlace de afiliado · sin coste para ti" data-i18n="et.cta">Abrir cuenta →</a>
+            <a href="javascript:void(0)" data-affiliate="etoro" class="btn btn-primary" data-tooltip="Enlace de afiliado · sin coste para ti" data-i18n="et.cta">Abrir cuenta →</a>
             <span class="broker-regulated" data-i18n="et.regulated">🔒 Regulado CySEC / FCA</span>
           </div>
           <p class="broker-note" data-i18n="et.note">* Enlace de afiliado — sin coste para ti</p>
@@ -776,7 +779,7 @@
               <td>1€</td>
               <td data-i18n="td.beginner">Principiante</td>
               <td>CNMV</td>
-              <td><a href="#myinvestor-afiliado" class="btn btn-primary btn-sm" data-i18n="tbl.open">Abrir</a></td>
+              <td><a href="javascript:void(0)" data-affiliate="myinvestor" class="btn btn-primary btn-sm" data-i18n="tbl.open">Abrir</a></td>
             </tr>
             <tr>
               <td><strong>Indexa Capital</strong></td>
@@ -785,7 +788,7 @@
               <td>1.000€</td>
               <td data-i18n="td.inter">Intermedio</td>
               <td>CNMV</td>
-              <td><a href="#indexa-afiliado" class="btn btn-primary btn-sm" data-i18n="tbl.6m">6 meses gratis</a></td>
+              <td><a href="javascript:void(0)" data-affiliate="indexa" class="btn btn-primary btn-sm" data-i18n="tbl.6m">6 meses gratis</a></td>
             </tr>
             <tr>
               <td><strong>DEGIRO</strong></td>
@@ -794,7 +797,7 @@
               <td>0€</td>
               <td data-i18n="td.intadv">Intermedio/Avanzado</td>
               <td>BaFin/CNMV</td>
-              <td><a href="#degiro-afiliado" class="btn btn-primary btn-sm" data-i18n="tbl.open">Abrir</a></td>
+              <td><a href="javascript:void(0)" data-affiliate="degiro" class="btn btn-primary btn-sm" data-i18n="tbl.open">Abrir</a></td>
             </tr>
             <tr>
               <td><strong>Interactive Brokers</strong></td>
@@ -803,7 +806,7 @@
               <td>0€</td>
               <td data-i18n="td.advanced">Avanzado</td>
               <td>SEC/FCA/CNMV</td>
-              <td><a href="#ib-afiliado" class="btn btn-primary btn-sm" data-i18n="tbl.open">Abrir</a></td>
+              <td><a href="javascript:void(0)" data-affiliate="interactive" class="btn btn-primary btn-sm" data-i18n="tbl.open">Abrir</a></td>
             </tr>
             <tr>
               <td><strong>Finizens</strong></td>
@@ -812,7 +815,7 @@
               <td>50€</td>
               <td data-i18n="td.begint">Principiante/Intermedio</td>
               <td>CNMV</td>
-              <td><a href="#finizens-afiliado" class="btn btn-primary btn-sm" data-i18n="tbl.start">Empezar</a></td>
+              <td><a href="javascript:void(0)" data-affiliate="finizens" class="btn btn-primary btn-sm" data-i18n="tbl.start">Empezar</a></td>
             </tr>
             <tr>
               <td><strong>eToro</strong></td>
@@ -821,7 +824,7 @@
               <td>50€</td>
               <td data-i18n="td.beginner">Principiante</td>
               <td>CySEC/FCA</td>
-              <td><a href="#etoro-afiliado" class="btn btn-primary btn-sm" data-i18n="tbl.open">Abrir</a></td>
+              <td><a href="javascript:void(0)" data-affiliate="etoro" class="btn btn-primary btn-sm" data-i18n="tbl.open">Abrir</a></td>
             </tr>
             <tr>
               <td><strong>Trade Republic</strong></td>
@@ -1431,6 +1434,11 @@
   </div>
 </div>
 
+<!-- Scripts de optimización -->
+<script src="optimizations.js"></script>
+<script src="affiliate-tracking.js"></script>
+
+<!-- Script principal -->
 <script src="main.js"></script>
 </body>
 </html>
