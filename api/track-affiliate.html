@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<title>Redirigiendo...</title>
+<style>
+  body { font-family: sans-serif; background: #0a0a0a; color: #fff; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+  .msg { text-align: center; }
+  .spinner { width: 32px; height: 32px; border: 3px solid #333; border-top-color: #00d4aa; border-radius: 50%; animation: spin 0.7s linear infinite; margin: 0 auto 16px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  p { color: #a0a0a0; font-size: 0.9rem; }
+</style>
+</head>
+<body>
+<div class="msg">
+  <div class="spinner"></div>
+  <p>Redirigiendo...</p>
+</div>
+<script>
+(function () {
+  var SUPABASE_URL = 'https://zytdqlgqpybessewfeyd.supabase.co';
+  var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp5dGRxbGdxcHliZXNzZXdmZXlkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgxNzQ2MDgsImV4cCI6MjA5Mzc1MDYwOH0.r226GTofF9achTMauIIaDiMsFacwF0RntPLia5ERC2c';
+
+  var BROKER_URLS = {
+    myinvestor:  'https://myinvestor.es?ref=brokercompass',
+    degiro:      'https://degiro.es?ref=brokercompass',
+    indexa:      'https://indexacapital.com?ref=brokercompass',
+    interactive: 'https://interactivebrokers.com?ref=brokercompass',
+    finizens:    'https://finizens.com?ref=brokercompass',
+    etoro:       'https://etoro.com?ref=brokercompass'
+  };
+
+  var params = new URLSearchParams(window.location.search);
+  var broker = params.get('broker') || 'unknown';
+  var source = params.get('source') || 'direct';
+
+  var userId = sessionStorage.getItem('bc_uid');
+  if (!userId) {
+    userId = Date.now() + '-' + Math.random().toString(36).slice(2, 8);
+    sessionStorage.setItem('bc_uid', userId);
+  }
+
+  var destUrl = BROKER_URLS[broker] || 'https://brokercompass.es';
+
+  var payload = {
+    broker_id:  broker,
+    event_type: 'click',
+    source:     source,
+    user_hash:  userId,
+    timestamp:  new Date().toISOString(),
+    page_path:  document.referrer ? new URL(document.referrer).pathname : '/'
+  };
+
+  fetch(SUPABASE_URL + '/rest/v1/affiliate_events', {
+    method: 'POST',
+    headers: {
+      'apikey':        SUPABASE_KEY,
+      'Authorization': 'Bearer ' + SUPABASE_KEY,
+      'Content-Type':  'application/json',
+      'Prefer':        'return=minimal'
+    },
+    body: JSON.stringify(payload)
+  })
+  .catch(function () {})
+  .finally(function () {
+    window.location.replace(destUrl);
+  });
+
+  // Redirige igualmente si fetch tarda más de 1.5s
+  setTimeout(function () { window.location.replace(destUrl); }, 1500);
+})();
+</script>
+</body>
+</html>
