@@ -1,3 +1,4 @@
 .claude/
 *.txt
 !robots.txt
+!ads.txt
