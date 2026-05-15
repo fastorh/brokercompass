@@ -8,9 +8,18 @@
 const SUPABASE_URL      = 'YOUR_SUPABASE_URL';        // https://xxxxxxxxxxxx.supabase.co
 const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';  // eyJhbGciOiJIUzI1NiIs...
 
-const _db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
-  auth: { persistSession: true, autoRefreshToken: true },
-});
+const _READY = SUPABASE_URL !== 'YOUR_SUPABASE_URL' && SUPABASE_ANON_KEY !== 'YOUR_SUPABASE_ANON_KEY';
+
+let _db = null;
+try {
+  if (_READY && window.supabase) {
+    _db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+      auth: { persistSession: true, autoRefreshToken: true },
+    });
+  }
+} catch (e) {
+  console.warn('[BrokerCompass Auth] Supabase init error:', e);
+}
 
 let _user        = null;
 let _activePanel = null;
@@ -20,6 +29,10 @@ let _activePanel = null;
 // ================================================================
 
 function initAuth() {
+  if (!_db) {
+    console.warn('[BrokerCompass Auth] Supabase no configurado. Rellena SUPABASE_URL y SUPABASE_ANON_KEY en auth.js');
+    return;
+  }
   _db.auth.onAuthStateChange(async (event, session) => {
     if ((event === 'SIGNED_IN' || event === 'INITIAL_SESSION') && session?.user) {
       _user = session.user;
@@ -97,6 +110,7 @@ function _setNavUI(user) {
 
 async function _refreshDisplay(user) {
   try {
+    if (!_db) return;
     const { data } = await _db.from('profiles')
       .select('nombre')
       .eq('id', user.id)
@@ -211,11 +225,13 @@ function _setLoading(btnId, on) {
 // ================================================================
 
 async function _hasProfile(uid) {
+  if (!_db) return false;
   const { data } = await _db.from('profiles').select('id').eq('id', uid).maybeSingle();
   return data !== null;
 }
 
 async function _usernameAvailable(username) {
+  if (!_db) return true;
   const { data, error } = await _db.rpc('check_username_available', {
     username_to_check: username.toLowerCase(),
   });
@@ -223,6 +239,7 @@ async function _usernameAvailable(username) {
 }
 
 async function _insertProfile(payload) {
+  if (!_db) return new Error('Supabase no configurado');
   const { error } = await _db.from('profiles').insert(payload);
   return error || null;
 }
@@ -265,6 +282,7 @@ async function _doLogin(e) {
   if (!pw)                 { _fieldErr('loginPwErr', 'Campo obligatorio'); ok = false; }
   if (!ok) return;
 
+  if (!_db) { _globalErr('login', 'Configura las credenciales de Supabase en auth.js para activar el login.'); return; }
   _setLoading('loginBtn', true);
   const { error } = await _db.auth.signInWithPassword({ email, password: pw });
   _setLoading('loginBtn', false);
@@ -298,6 +316,7 @@ async function _doRegister(e) {
   else { const e = _validPw(pw); if (e) { _fieldErr('regPwErr', e); ok = false; } }
   if (!ok) return;
 
+  if (!_db) { _globalErr('register', 'Configura las credenciales de Supabase en auth.js para activar el registro.'); return; }
   _setLoading('registerBtn', true);
   const avail = await _usernameAvailable(username);
   if (!avail) {
@@ -331,6 +350,7 @@ async function _doRegister(e) {
 }
 
 async function _doGoogle() {
+  if (!_db) { alert('Configura las credenciales de Supabase en auth.js para activar Google login.'); return; }
   await _db.auth.signInWithOAuth({
     provider: 'google',
     options: { redirectTo: window.location.origin + '/' },
@@ -383,7 +403,7 @@ async function _doCompleteProfile(e) {
 
 async function _doLogout() {
   document.getElementById('userDropdown')?.classList.remove('open');
-  await _db.auth.signOut();
+  if (_db) await _db.auth.signOut();
 }
 
 // ================================================================
