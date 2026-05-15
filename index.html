@@ -75,7 +75,28 @@
     </ul>
     <div class="nav-right">
       <button class="translate-btn" id="translateBtn" aria-label="Cambiar idioma">🌐 EN</button>
-      <a href="#comparativa" data-page="comparativa" class="btn btn-primary btn-sm" data-i18n="nav.cta">Ver mejores brokers →</a>
+
+      <!-- Auth buttons — unauthenticated state -->
+      <div class="auth-nav-btns" id="authNavBtns">
+        <button class="btn btn-secondary btn-sm" id="navLoginBtn">Iniciar sesión</button>
+        <button class="btn btn-primary btn-sm" id="navRegisterBtn">Registrarse</button>
+      </div>
+
+      <!-- User menu — authenticated state -->
+      <div class="auth-user-menu" id="navUserMenu" style="display:none;">
+        <button class="auth-user-trigger" id="navUserMenuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Menú de usuario">
+          <span class="auth-avatar">U</span>
+          <span class="auth-user-name">Usuario</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="auth-dropdown" id="userDropdown" role="menu">
+          <button class="auth-drop-item" data-auth-logout role="menuitem">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            Cerrar sesión
+          </button>
+        </div>
+      </div>
+
       <button class="hamburger" id="ham" aria-label="Abrir menú" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -90,7 +111,18 @@
   <a href="#guias"       data-page="guias"       data-i18n="nav.guides">Guías</a>
   <a href="#faq"         data-page="faq">FAQ</a>
   <a href="#contacto"    data-page="contacto"    data-i18n="nav.contact">Contacto</a>
-  <a href="#comparativa" data-page="comparativa" class="btn btn-primary" data-i18n="nav.cta">Ver mejores brokers →</a>
+
+  <!-- Auth en menú móvil — unauthenticated -->
+  <div class="mob-auth-btns" id="mobAuthBtns">
+    <button class="btn btn-secondary" id="mobLoginBtn">Iniciar sesión</button>
+    <button class="btn btn-primary"   id="mobRegisterBtn">Registrarse</button>
+  </div>
+
+  <!-- Auth en menú móvil — authenticated -->
+  <div class="mob-user-section" id="mobUserSection" style="display:none;">
+    <p class="mob-user-greet">Hola, <span class="auth-user-name">Usuario</span></p>
+    <button class="btn btn-secondary" data-auth-logout>Cerrar sesión</button>
+  </div>
 </div>
 
 
@@ -1443,7 +1475,163 @@
   </div>
 </div>
 
+<!-- ═══════════════════════════════════════════
+     MODAL DE AUTENTICACIÓN
+═══════════════════════════════════════════ -->
+<div class="auth-overlay" id="authModal" role="dialog" aria-modal="true" aria-label="Autenticación BrokerCompass">
+  <div class="auth-box">
+
+    <!-- Botón cerrar (oculto en complete-profile) -->
+    <button class="auth-close" id="authModalClose" aria-label="Cerrar modal">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <!-- ── PANEL: LOGIN ── -->
+    <div class="auth-panel active" data-panel="login">
+      <div class="auth-brand">
+        <svg width="22" height="22" viewBox="0 0 28 28" fill="none" aria-hidden="true"><circle cx="14" cy="14" r="13" stroke="var(--green)" stroke-width="2"/><path d="M14 4L16.5 11.5L14 14L11.5 11.5L14 4Z" fill="var(--green)"/><path d="M14 24L11.5 16.5L14 14L16.5 16.5L14 24Z" fill="var(--green)" opacity="0.45"/><circle cx="14" cy="14" r="2" fill="var(--green)"/></svg>
+        Broker<em>Compass</em>
+      </div>
+      <h2 class="auth-title">Bienvenido de nuevo</h2>
+      <p class="auth-sub">Inicia sesión en tu cuenta</p>
+
+      <div class="auth-global-err" style="display:none;"></div>
+
+      <button class="auth-google-btn" data-auth-google type="button">
+        <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        Continuar con Google
+      </button>
+
+      <div class="auth-sep"><span>o</span></div>
+
+      <form id="loginForm" novalidate>
+        <div class="auth-field">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" name="email" placeholder="tu@email.com" autocomplete="email" required>
+          <span class="auth-field-error" id="loginEmailErr" style="display:none;"></span>
+        </div>
+        <div class="auth-field">
+          <label for="loginPassword">Contraseña</label>
+          <input type="password" id="loginPassword" name="password" placeholder="Tu contraseña" autocomplete="current-password" required>
+          <span class="auth-field-error" id="loginPwErr" style="display:none;"></span>
+        </div>
+        <button type="submit" class="btn btn-primary auth-submit" id="loginBtn">Iniciar sesión</button>
+      </form>
+
+      <p class="auth-toggle">¿No tienes cuenta?
+        <button type="button" class="auth-link-btn" data-auth-to="register">Regístrate gratis</button>
+      </p>
+    </div>
+
+    <!-- ── PANEL: REGISTRO ── -->
+    <div class="auth-panel" data-panel="register">
+      <div class="auth-brand">
+        <svg width="22" height="22" viewBox="0 0 28 28" fill="none" aria-hidden="true"><circle cx="14" cy="14" r="13" stroke="var(--green)" stroke-width="2"/><path d="M14 4L16.5 11.5L14 14L11.5 11.5L14 4Z" fill="var(--green)"/><path d="M14 24L11.5 16.5L14 14L16.5 16.5L14 24Z" fill="var(--green)" opacity="0.45"/><circle cx="14" cy="14" r="2" fill="var(--green)"/></svg>
+        Broker<em>Compass</em>
+      </div>
+      <h2 class="auth-title">Crear cuenta</h2>
+      <p class="auth-sub">Únete a BrokerCompass — es gratis</p>
+
+      <div class="auth-global-err" style="display:none;"></div>
+
+      <button class="auth-google-btn" data-auth-google type="button">
+        <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        Continuar con Google
+      </button>
+
+      <div class="auth-sep"><span>o</span></div>
+
+      <form id="registerForm" novalidate>
+        <div class="auth-row">
+          <div class="auth-field">
+            <label for="regNombre">Nombre <span class="auth-req">*</span></label>
+            <input type="text" id="regNombre" name="nombre" placeholder="Tu nombre" autocomplete="given-name" required>
+            <span class="auth-field-error" id="regNombreErr" style="display:none;"></span>
+          </div>
+          <div class="auth-field">
+            <label for="regApellido">Apellido <span class="auth-req">*</span></label>
+            <input type="text" id="regApellido" name="apellido" placeholder="Tu apellido" autocomplete="family-name" required>
+            <span class="auth-field-error" id="regApellidoErr" style="display:none;"></span>
+          </div>
+        </div>
+        <div class="auth-field">
+          <label for="regUsername">Nombre de usuario <span class="auth-req">*</span></label>
+          <input type="text" id="regUsername" name="username" placeholder="mi_nombre_1" autocomplete="username" required>
+          <span class="auth-field-error" id="regUsernameErr" style="display:none;"></span>
+        </div>
+        <div class="auth-field">
+          <label for="regEmail">Email <span class="auth-req">*</span></label>
+          <input type="email" id="regEmail" name="email" placeholder="tu@email.com" autocomplete="email" required>
+          <span class="auth-field-error" id="regEmailErr" style="display:none;"></span>
+        </div>
+        <div class="auth-field">
+          <label for="regPw">Contraseña <span class="auth-req">*</span></label>
+          <input type="password" id="regPw" name="password" placeholder="Mín. 8 car. + 1 número o símbolo" autocomplete="new-password" required>
+          <span class="auth-field-error" id="regPwErr" style="display:none;"></span>
+        </div>
+        <button type="submit" class="btn btn-primary auth-submit" id="registerBtn">Crear cuenta gratis</button>
+      </form>
+
+      <p class="auth-toggle">¿Ya tienes cuenta?
+        <button type="button" class="auth-link-btn" data-auth-to="login">Iniciar sesión</button>
+      </p>
+    </div>
+
+    <!-- ── PANEL: COMPLETAR PERFIL (usuarios de Google) ── -->
+    <div class="auth-panel" data-panel="complete-profile">
+      <div class="auth-brand">
+        <svg width="22" height="22" viewBox="0 0 28 28" fill="none" aria-hidden="true"><circle cx="14" cy="14" r="13" stroke="var(--green)" stroke-width="2"/><path d="M14 4L16.5 11.5L14 14L11.5 11.5L14 4Z" fill="var(--green)"/><path d="M14 24L11.5 16.5L14 14L16.5 16.5L14 24Z" fill="var(--green)" opacity="0.45"/><circle cx="14" cy="14" r="2" fill="var(--green)"/></svg>
+        Broker<em>Compass</em>
+      </div>
+      <h2 class="auth-title">Un último paso</h2>
+      <p class="auth-sub">Completa tu perfil para continuar</p>
+
+      <div class="auth-global-err" style="display:none;"></div>
+
+      <form id="cpForm" novalidate>
+        <div class="auth-row">
+          <div class="auth-field">
+            <label for="cpNombre">Nombre <span class="auth-req">*</span></label>
+            <input type="text" id="cpNombre" name="nombre" placeholder="Tu nombre" autocomplete="given-name" required>
+            <span class="auth-field-error" id="cpNombreErr" style="display:none;"></span>
+          </div>
+          <div class="auth-field">
+            <label for="cpApellido">Apellido <span class="auth-req">*</span></label>
+            <input type="text" id="cpApellido" name="apellido" placeholder="Tu apellido" autocomplete="family-name" required>
+            <span class="auth-field-error" id="cpApellidoErr" style="display:none;"></span>
+          </div>
+        </div>
+        <div class="auth-field">
+          <label for="cpUsername">Nombre de usuario <span class="auth-req">*</span></label>
+          <input type="text" id="cpUsername" name="username" placeholder="mi_nombre_1" autocomplete="username" required>
+          <p class="auth-hint">3–20 caracteres · Solo letras, números y _</p>
+          <span class="auth-field-error" id="cpUsernameErr" style="display:none;"></span>
+        </div>
+        <button type="submit" class="btn btn-primary auth-submit" id="cpBtn">Guardar y continuar →</button>
+        <button type="button" class="auth-escape-link" data-auth-logout>Cerrar sesión</button>
+      </form>
+    </div>
+
+    <!-- ── PANEL: VERIFICAR EMAIL ── -->
+    <div class="auth-panel" data-panel="verify-email">
+      <div class="auth-verify-icon">📧</div>
+      <h2 class="auth-title">Verifica tu email</h2>
+      <p class="auth-sub">
+        Hemos enviado un enlace de verificación a<br>
+        <strong id="verifyEmailText"></strong>
+      </p>
+      <p class="auth-hint" style="text-align:center;margin:12px 0 24px;">
+        ¿No lo ves? Revisa la carpeta de spam o correo no deseado.
+      </p>
+      <button type="button" class="btn btn-secondary auth-submit" data-auth-close>Cerrar</button>
+    </div>
+
+  </div>
+</div>
+
 <!-- Scripts de optimización -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
 <script src="optimizations.js"></script>
 <script src="affiliate-tracking.js"></script>
 

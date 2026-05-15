@@ -1,0 +1,485 @@
+/* ================================================================
+   BrokerCompass — auth.js
+   Sistema de autenticación con Supabase (email + Google OAuth)
+   ================================================================ */
+
+// ⚠️  REEMPLAZA estos valores con los de tu proyecto Supabase:
+//   Dashboard → Settings → API → Project URL y Project API Keys (anon/public)
+const SUPABASE_URL      = 'YOUR_SUPABASE_URL';        // https://xxxxxxxxxxxx.supabase.co
+const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';  // eyJhbGciOiJIUzI1NiIs...
+
+const _db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+  auth: { persistSession: true, autoRefreshToken: true },
+});
+
+let _user        = null;
+let _activePanel = null;
+
+// ================================================================
+// INICIALIZACIÓN
+// ================================================================
+
+function initAuth() {
+  _db.auth.onAuthStateChange(async (event, session) => {
+    if ((event === 'SIGNED_IN' || event === 'INITIAL_SESSION') && session?.user) {
+      _user = session.user;
+      _setNavUI(_user);
+      await _postLogin(_user);
+    } else if (event === 'SIGNED_OUT' || (event === 'INITIAL_SESSION' && !session)) {
+      _user = null;
+      _setNavUI(null);
+    }
+  });
+}
+
+// Se ejecuta tras cada SIGNED_IN: verifica el perfil y actúa en consecuencia
+async function _postLogin(user) {
+  const exists = await _hasProfile(user.id);
+
+  if (exists) {
+    _closeModal();
+    await _refreshDisplay(user);
+    return;
+  }
+
+  const meta     = user.user_metadata || {};
+  const isGoogle = user.app_metadata?.provider === 'google';
+
+  // Usuario de email con metadata guardada en signup → intentar crear perfil directamente
+  if (!isGoogle && meta.username) {
+    const err = await _insertProfile({
+      id:             user.id,
+      nombre:         meta.nombre   || '',
+      apellido:       meta.apellido || '',
+      username:       meta.username,
+      email:          user.email    || '',
+      proveedor_auth: 'email',
+    });
+    if (!err) {
+      _closeModal();
+      await _refreshDisplay(user);
+      return;
+    }
+    // Conflict de username → caer al modal de completar perfil
+  }
+
+  // Usuario de Google (o email con conflict) → pedir datos de perfil
+  const fullName  = meta.full_name || meta.name || '';
+  const nameParts = fullName.trim().split(/\s+/);
+  _openModal('complete-profile', {
+    nombre:   meta.given_name  || nameParts[0]                    || meta.nombre   || '',
+    apellido: meta.family_name || nameParts.slice(1).join(' ')    || meta.apellido || '',
+  });
+}
+
+// ================================================================
+// INTERFAZ DE NAVEGACIÓN
+// ================================================================
+
+function _setNavUI(user) {
+  const authBtns = document.getElementById('authNavBtns');
+  const userMenu = document.getElementById('navUserMenu');
+  const mobAuth  = document.getElementById('mobAuthBtns');
+  const mobUser  = document.getElementById('mobUserSection');
+
+  if (user) {
+    if (authBtns) authBtns.style.display = 'none';
+    if (userMenu) userMenu.style.display = 'flex';
+    if (mobAuth)  mobAuth.style.display  = 'none';
+    if (mobUser)  mobUser.style.display  = 'flex';
+  } else {
+    if (authBtns) authBtns.style.display = 'flex';
+    if (userMenu) userMenu.style.display = 'none';
+    if (mobAuth)  mobAuth.style.display  = 'flex';
+    if (mobUser)  mobUser.style.display  = 'none';
+  }
+}
+
+async function _refreshDisplay(user) {
+  try {
+    const { data } = await _db.from('profiles')
+      .select('nombre')
+      .eq('id', user.id)
+      .single();
+
+    const name    = data?.nombre || user.email?.split('@')[0] || 'Usuario';
+    const initial = (name[0] || 'U').toUpperCase();
+
+    document.querySelectorAll('.auth-user-name').forEach(el => (el.textContent = name));
+    document.querySelectorAll('.auth-avatar').forEach(el => (el.textContent = initial));
+  } catch (_) {}
+}
+
+// ================================================================
+// MODAL
+// ================================================================
+
+function _openModal(mode, prefill = {}) {
+  // Cierra el menú móvil si está abierto
+  document.getElementById('mobMenu')?.classList.remove('open');
+  const ham = document.getElementById('ham');
+  if (ham) { ham.classList.remove('open'); ham.setAttribute('aria-expanded', 'false'); }
+
+  _switchPanel(mode, prefill);
+
+  const overlay = document.getElementById('authModal');
+  if (overlay) {
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function _switchPanel(mode, prefill = {}) {
+  _activePanel = mode;
+
+  const overlay = document.getElementById('authModal');
+  if (!overlay) return;
+
+  overlay.querySelectorAll('.auth-panel').forEach(p => p.classList.remove('active'));
+  const panel = overlay.querySelector(`[data-panel="${mode}"]`);
+  if (!panel) return;
+  panel.classList.add('active');
+
+  // Ocultar botón X cuando completar perfil es obligatorio
+  const closeBtn = document.getElementById('authModalClose');
+  if (closeBtn) closeBtn.style.display = mode === 'complete-profile' ? 'none' : '';
+
+  // Pre-rellenar campos del formulario de perfil
+  if (mode === 'complete-profile') {
+    const n = document.getElementById('cpNombre');
+    const a = document.getElementById('cpApellido');
+    if (n && prefill.nombre   && !n.value) n.value = prefill.nombre;
+    if (a && prefill.apellido && !a.value) a.value = prefill.apellido;
+  }
+
+  setTimeout(() => panel.querySelector('input')?.focus(), 130);
+}
+
+function _closeModal() {
+  const overlay = document.getElementById('authModal');
+  if (!overlay) return;
+  overlay.classList.remove('active');
+  document.body.style.overflow = '';
+  _activePanel = null;
+  _clearErrors();
+}
+
+// ================================================================
+// ERRORES
+// ================================================================
+
+function _clearErrors() {
+  document.querySelectorAll('.auth-field-error, .auth-global-err').forEach(el => {
+    el.textContent = '';
+    el.style.display = 'none';
+  });
+}
+
+function _fieldErr(id, msg) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+function _globalErr(panel, msg) {
+  const el = document.querySelector(`[data-panel="${panel}"] .auth-global-err`);
+  if (!el) return;
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+// ================================================================
+// ESTADO DE CARGA
+// ================================================================
+
+function _setLoading(btnId, on) {
+  const btn = document.getElementById(btnId);
+  if (!btn) return;
+  if (on) {
+    btn.disabled      = true;
+    btn.dataset.orig  = btn.innerHTML;
+    btn.innerHTML     = '<span class="auth-spinner"></span>Cargando...';
+  } else {
+    btn.disabled  = false;
+    btn.innerHTML = btn.dataset.orig || btn.innerHTML;
+  }
+}
+
+// ================================================================
+// BASE DE DATOS
+// ================================================================
+
+async function _hasProfile(uid) {
+  const { data } = await _db.from('profiles').select('id').eq('id', uid).maybeSingle();
+  return data !== null;
+}
+
+async function _usernameAvailable(username) {
+  const { data, error } = await _db.rpc('check_username_available', {
+    username_to_check: username.toLowerCase(),
+  });
+  return !error && data === true;
+}
+
+async function _insertProfile(payload) {
+  const { error } = await _db.from('profiles').insert(payload);
+  return error || null;
+}
+
+// ================================================================
+// VALIDACIÓN
+// ================================================================
+
+function _validEmail(v) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+}
+
+function _validPw(v) {
+  if (v.length < 8) return 'Mínimo 8 caracteres';
+  if (!/[0-9!@#$%^&*()\-_=+[\]{};:'",.<>/?\\|`~]/.test(v)) return 'Incluye al menos 1 número o símbolo';
+  return null;
+}
+
+function _validUsername(v) {
+  if (v.length < 3)              return 'Mínimo 3 caracteres';
+  if (v.length > 20)             return 'Máximo 20 caracteres';
+  if (!/^[a-zA-Z0-9_]+$/.test(v)) return 'Solo letras, números y _';
+  return null;
+}
+
+// ================================================================
+// ACCIONES DE AUTENTICACIÓN
+// ================================================================
+
+async function _doLogin(e) {
+  e.preventDefault();
+  _clearErrors();
+
+  const email = document.getElementById('loginEmail').value.trim();
+  const pw    = document.getElementById('loginPassword').value;
+  let ok = true;
+
+  if (!email)              { _fieldErr('loginEmailErr', 'Campo obligatorio'); ok = false; }
+  else if (!_validEmail(email)) { _fieldErr('loginEmailErr', 'Email no válido'); ok = false; }
+  if (!pw)                 { _fieldErr('loginPwErr', 'Campo obligatorio'); ok = false; }
+  if (!ok) return;
+
+  _setLoading('loginBtn', true);
+  const { error } = await _db.auth.signInWithPassword({ email, password: pw });
+  _setLoading('loginBtn', false);
+
+  if (!error) return; // onAuthStateChange gestiona el éxito
+
+  const msg = error.message.toLowerCase();
+  if (msg.includes('invalid'))  _globalErr('login', 'Email o contraseña incorrectos');
+  else if (msg.includes('confirm')) _globalErr('login', 'Verifica tu email antes de iniciar sesión. Revisa tu bandeja.');
+  else _globalErr('login', 'Error al iniciar sesión. Inténtalo de nuevo.');
+}
+
+async function _doRegister(e) {
+  e.preventDefault();
+  _clearErrors();
+
+  const nombre   = document.getElementById('regNombre').value.trim();
+  const apellido = document.getElementById('regApellido').value.trim();
+  const username = document.getElementById('regUsername').value.trim().toLowerCase();
+  const email    = document.getElementById('regEmail').value.trim();
+  const pw       = document.getElementById('regPw').value;
+
+  let ok = true;
+  if (!nombre)   { _fieldErr('regNombreErr',   'Obligatorio'); ok = false; }
+  if (!apellido) { _fieldErr('regApellidoErr', 'Obligatorio'); ok = false; }
+  if (!username) { _fieldErr('regUsernameErr', 'Obligatorio'); ok = false; }
+  else { const e = _validUsername(username); if (e) { _fieldErr('regUsernameErr', e); ok = false; } }
+  if (!email)    { _fieldErr('regEmailErr', 'Obligatorio'); ok = false; }
+  else if (!_validEmail(email)) { _fieldErr('regEmailErr', 'Email no válido'); ok = false; }
+  if (!pw)       { _fieldErr('regPwErr', 'Obligatorio'); ok = false; }
+  else { const e = _validPw(pw); if (e) { _fieldErr('regPwErr', e); ok = false; } }
+  if (!ok) return;
+
+  _setLoading('registerBtn', true);
+  const avail = await _usernameAvailable(username);
+  if (!avail) {
+    _fieldErr('regUsernameErr', 'Nombre de usuario ya en uso');
+    _setLoading('registerBtn', false);
+    return;
+  }
+
+  const { data, error } = await _db.auth.signUp({
+    email,
+    password: pw,
+    options: { data: { nombre, apellido, username } },
+  });
+  _setLoading('registerBtn', false);
+
+  if (error) {
+    const msg = error.message.toLowerCase();
+    _globalErr('register', msg.includes('registered')
+      ? 'Este email ya está registrado. Inicia sesión.'
+      : 'Error al crear la cuenta. Inténtalo de nuevo.');
+    return;
+  }
+
+  if (!data.session) {
+    // Confirmación de email requerida → mostrar panel de verificación
+    _switchPanel('verify-email');
+    const el = document.getElementById('verifyEmailText');
+    if (el) el.textContent = email;
+  }
+  // Si data.session existe, onAuthStateChange lo gestiona automáticamente
+}
+
+async function _doGoogle() {
+  await _db.auth.signInWithOAuth({
+    provider: 'google',
+    options: { redirectTo: window.location.origin + '/' },
+  });
+}
+
+async function _doCompleteProfile(e) {
+  e.preventDefault();
+  _clearErrors();
+  if (!_user) return;
+
+  const nombre   = document.getElementById('cpNombre').value.trim();
+  const apellido = document.getElementById('cpApellido').value.trim();
+  const username = document.getElementById('cpUsername').value.trim().toLowerCase();
+
+  let ok = true;
+  if (!nombre)   { _fieldErr('cpNombreErr',   'Obligatorio'); ok = false; }
+  if (!apellido) { _fieldErr('cpApellidoErr', 'Obligatorio'); ok = false; }
+  if (!username) { _fieldErr('cpUsernameErr', 'Obligatorio'); ok = false; }
+  else { const e = _validUsername(username); if (e) { _fieldErr('cpUsernameErr', e); ok = false; } }
+  if (!ok) return;
+
+  _setLoading('cpBtn', true);
+  const avail = await _usernameAvailable(username);
+  if (!avail) {
+    _fieldErr('cpUsernameErr', 'Nombre de usuario ya en uso');
+    _setLoading('cpBtn', false);
+    return;
+  }
+
+  const err = await _insertProfile({
+    id:             _user.id,
+    nombre,
+    apellido,
+    username,
+    email:          _user.email          || '',
+    proveedor_auth: _user.app_metadata?.provider || 'google',
+  });
+  _setLoading('cpBtn', false);
+
+  if (err) {
+    if (err.code === '23505') _fieldErr('cpUsernameErr', 'Nombre de usuario ya en uso');
+    else _globalErr('complete-profile', 'Error al guardar el perfil. Inténtalo de nuevo.');
+    return;
+  }
+
+  _closeModal();
+  await _refreshDisplay(_user);
+}
+
+async function _doLogout() {
+  document.getElementById('userDropdown')?.classList.remove('open');
+  await _db.auth.signOut();
+}
+
+// ================================================================
+// EVENTOS
+// ================================================================
+
+function _debounce(fn, ms) {
+  let t;
+  return function () { clearTimeout(t); t = setTimeout(() => fn(), ms); };
+}
+
+function _setupEvents() {
+  // Abrir modal desde botones del nav
+  ['navLoginBtn', 'mobLoginBtn'].forEach(id =>
+    document.getElementById(id)?.addEventListener('click', () => _openModal('login'))
+  );
+  ['navRegisterBtn', 'mobRegisterBtn'].forEach(id =>
+    document.getElementById(id)?.addEventListener('click', () => _openModal('register'))
+  );
+
+  // Cerrar modal
+  document.getElementById('authModalClose')?.addEventListener('click', _closeModal);
+  document.querySelectorAll('[data-auth-close]').forEach(btn =>
+    btn.addEventListener('click', _closeModal)
+  );
+  document.getElementById('authModal')?.addEventListener('click', e => {
+    if (e.target.id === 'authModal') _closeModal();
+  });
+
+  // Cambiar entre paneles
+  document.querySelectorAll('[data-auth-to]').forEach(el =>
+    el.addEventListener('click', () => _openModal(el.dataset.authTo))
+  );
+
+  // Formularios
+  document.getElementById('loginForm')?.addEventListener('submit', _doLogin);
+  document.getElementById('registerForm')?.addEventListener('submit', _doRegister);
+  document.getElementById('cpForm')?.addEventListener('submit', _doCompleteProfile);
+
+  // Google OAuth
+  document.querySelectorAll('[data-auth-google]').forEach(btn =>
+    btn.addEventListener('click', _doGoogle)
+  );
+
+  // Cerrar sesión
+  document.querySelectorAll('[data-auth-logout]').forEach(btn =>
+    btn.addEventListener('click', _doLogout)
+  );
+
+  // Dropdown del usuario en desktop
+  document.getElementById('navUserMenuBtn')?.addEventListener('click', () =>
+    document.getElementById('userDropdown')?.classList.toggle('open')
+  );
+  document.addEventListener('click', e => {
+    if (!e.target.closest('#navUserMenu'))
+      document.getElementById('userDropdown')?.classList.remove('open');
+  });
+
+  // Tecla ESC (no cierra complete-profile porque es obligatorio)
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && _activePanel && _activePanel !== 'complete-profile')
+      _closeModal();
+  });
+
+  // Validación de username en tiempo real con debounce
+  const _debRegUser = _debounce(async () => {
+    const u = (document.getElementById('regUsername')?.value || '').trim().toLowerCase();
+    if (!u) return;
+    const e = _validUsername(u);
+    if (e) { _fieldErr('regUsernameErr', e); return; }
+    const el = document.getElementById('regUsernameErr');
+    if (el) el.style.display = 'none';
+    const avail = await _usernameAvailable(u);
+    if (!avail) _fieldErr('regUsernameErr', 'Nombre de usuario ya en uso');
+  }, 600);
+
+  const _debCpUser = _debounce(async () => {
+    const u = (document.getElementById('cpUsername')?.value || '').trim().toLowerCase();
+    if (!u) return;
+    const e = _validUsername(u);
+    if (e) { _fieldErr('cpUsernameErr', e); return; }
+    const el = document.getElementById('cpUsernameErr');
+    if (el) el.style.display = 'none';
+    const avail = await _usernameAvailable(u);
+    if (!avail) _fieldErr('cpUsernameErr', 'Nombre de usuario ya en uso');
+  }, 600);
+
+  document.getElementById('regUsername')?.addEventListener('input', _debRegUser);
+  document.getElementById('cpUsername')?.addEventListener('input', _debCpUser);
+}
+
+// ================================================================
+// ARRANQUE
+// ================================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+  _setupEvents();
+  initAuth();
+});
