@@ -350,7 +350,11 @@ async function _doRegister(e) {
 }
 
 async function _doGoogle() {
-  if (!_db) { alert('Configura las credenciales de Supabase en auth.js para activar Google login.'); return; }
+  if (!_db) {
+    const panel = _activePanel || 'login';
+    _globalErr(panel, 'Google login no disponible: configura las credenciales de Supabase en auth.js');
+    return;
+  }
   await _db.auth.signInWithOAuth({
     provider: 'google',
     options: { redirectTo: window.location.origin + '/' },
