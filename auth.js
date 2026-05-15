@@ -5,8 +5,8 @@
 
 // ⚠️  REEMPLAZA estos valores con los de tu proyecto Supabase:
 //   Dashboard → Settings → API → Project URL y Project API Keys (anon/public)
-const SUPABASE_URL      = 'YOUR_SUPABASE_URL';        // https://xxxxxxxxxxxx.supabase.co
-const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';  // eyJhbGciOiJIUzI1NiIs...
+const SUPABASE_URL      = 'https://zytdqlgqpybessewfeyd.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp5dGRxbGdxcHliZXNzZXdmZXlkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgxNzQ2MDgsImV4cCI6MjA5Mzc1MDYwOH0.r226GTofF9achTMauIIaDiMsFacwF0RntPLia5ERC2c';
 
 const _READY = SUPABASE_URL !== 'YOUR_SUPABASE_URL' && SUPABASE_ANON_KEY !== 'YOUR_SUPABASE_ANON_KEY';
 
