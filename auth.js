@@ -145,6 +145,7 @@ function _openModal(mode, prefill = {}) {
 
 function _switchPanel(mode, prefill = {}) {
   _activePanel = mode;
+  _clearErrors();
 
   const overlay = document.getElementById('authModal');
   if (!overlay) return;
