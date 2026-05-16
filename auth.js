@@ -86,7 +86,16 @@ async function _postLogin(user) {
       await _refreshDisplay(user);
       return;
     }
-    // Conflict de username → caer al modal de completar perfil
+    // Conflict de username → caer al modal de completar perfil con error visible
+    const fullName2  = meta.full_name || meta.name || '';
+    const nameParts2 = fullName2.trim().split(/\s+/);
+    _openModal('complete-profile', {
+      nombre:   meta.given_name  || nameParts2[0]                  || meta.nombre   || '',
+      apellido: meta.family_name || nameParts2.slice(1).join(' ')  || meta.apellido || '',
+      username: meta.username || '',
+    });
+    setTimeout(() => _fieldErr('cpUsernameErr', 'Este nombre de usuario ya está en uso, elige otro'), 200);
+    return;
   }
 
   // Google (intent register) o email con conflict → pedir datos de perfil
@@ -95,6 +104,7 @@ async function _postLogin(user) {
   _openModal('complete-profile', {
     nombre:   meta.given_name  || nameParts[0]                 || meta.nombre   || '',
     apellido: meta.family_name || nameParts.slice(1).join(' ') || meta.apellido || '',
+    username: meta.username || '',
   });
 }
 
@@ -176,8 +186,10 @@ function _switchPanel(mode, prefill = {}) {
   if (mode === 'complete-profile') {
     const n = document.getElementById('cpNombre');
     const a = document.getElementById('cpApellido');
+    const u = document.getElementById('cpUsername');
     if (n && prefill.nombre   && !n.value) n.value = prefill.nombre;
     if (a && prefill.apellido && !a.value) a.value = prefill.apellido;
+    if (u && prefill.username && !u.value) u.value = prefill.username;
   }
 
   setTimeout(() => panel.querySelector('input')?.focus(), 130);
