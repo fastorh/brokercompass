@@ -409,6 +409,7 @@ async function _doCompleteProfile(e) {
 async function _doLogout() {
   document.getElementById('userDropdown')?.classList.remove('open');
   if (_db) await _db.auth.signOut();
+  window.location.href = window.location.origin + '/';
 }
 
 // ================================================================
