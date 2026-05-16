@@ -261,7 +261,11 @@ async function _usernameAvailable(username) {
   const { data, error } = await _db.rpc('check_username_available', {
     username_to_check: username.toLowerCase(),
   });
-  return !error && data === true;
+  if (error) {
+    console.warn('[BrokerCompass] check_username_available error:', error);
+    return true; // ante error de RPC, permitir continuar
+  }
+  return data === true;
 }
 
 async function _insertProfile(payload) {
