@@ -47,18 +47,31 @@ function initAuth() {
 
 // Se ejecuta tras cada SIGNED_IN: verifica el perfil y actúa en consecuencia
 async function _postLogin(user) {
+  const isGoogle = user.app_metadata?.provider === 'google';
+  const intent   = sessionStorage.getItem('oauth_intent') || 'login';
+  if (isGoogle) sessionStorage.removeItem('oauth_intent');
+
   const exists = await _hasProfile(user.id);
 
   if (exists) {
+    // Usuario con cuenta existente → siempre dejar entrar, sin importar intent
     _closeModal();
     await _refreshDisplay(user);
     return;
   }
 
-  const meta     = user.user_metadata || {};
-  const isGoogle = user.app_metadata?.provider === 'google';
+  const meta = user.user_metadata || {};
 
-  // Usuario de email con metadata guardada en signup → intentar crear perfil directamente
+  // Google + intent login → no tiene cuenta, rechazar con mensaje claro
+  if (isGoogle && intent === 'login') {
+    await _db.auth.signOut();
+    _user = null;
+    _openModal('login');
+    _globalErr('login', 'No tienes cuenta con ese email. Pulsa "Regístrate gratis" para crear una.');
+    return;
+  }
+
+  // Email con metadata del signup → crear perfil directamente
   if (!isGoogle && meta.username) {
     const err = await _insertProfile({
       id:             user.id,
@@ -76,12 +89,12 @@ async function _postLogin(user) {
     // Conflict de username → caer al modal de completar perfil
   }
 
-  // Usuario de Google (o email con conflict) → pedir datos de perfil
+  // Google (intent register) o email con conflict → pedir datos de perfil
   const fullName  = meta.full_name || meta.name || '';
   const nameParts = fullName.trim().split(/\s+/);
   _openModal('complete-profile', {
-    nombre:   meta.given_name  || nameParts[0]                    || meta.nombre   || '',
-    apellido: meta.family_name || nameParts.slice(1).join(' ')    || meta.apellido || '',
+    nombre:   meta.given_name  || nameParts[0]                 || meta.nombre   || '',
+    apellido: meta.family_name || nameParts.slice(1).join(' ') || meta.apellido || '',
   });
 }
 
@@ -356,10 +369,33 @@ async function _doGoogle() {
     _globalErr(panel, 'Google login no disponible: configura las credenciales de Supabase en auth.js');
     return;
   }
+
+  const intent = _activePanel === 'register' ? 'register' : 'login';
+  sessionStorage.setItem('oauth_intent', intent);
+
+  const btnId = intent === 'register' ? 'registerGoogleBtn' : 'loginGoogleBtn';
+  _setGoogleLoading(btnId, true);
+
   await _db.auth.signInWithOAuth({
     provider: 'google',
-    options: { redirectTo: window.location.origin + '/' },
+    options: {
+      redirectTo: 'https://brokercompass.es/',
+      queryParams: { prompt: 'select_account', access_type: 'online' },
+    },
   });
+}
+
+function _setGoogleLoading(btnId, on) {
+  const btn = document.getElementById(btnId);
+  if (!btn) return;
+  if (on) {
+    btn.disabled     = true;
+    btn.dataset.orig = btn.innerHTML;
+    btn.innerHTML    = '<span class="auth-spinner"></span>Conectando con Google...';
+  } else {
+    btn.disabled  = false;
+    btn.innerHTML = btn.dataset.orig || btn.innerHTML;
+  }
 }
 
 async function _doCompleteProfile(e) {
