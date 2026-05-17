@@ -7,6 +7,7 @@
 //   Dashboard → Settings → API → Project URL y Project API Keys (anon/public)
 const SUPABASE_URL      = 'https://zytdqlgqpybessewfeyd.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp5dGRxbGdxcHliZXNzZXdmZXlkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgxNzQ2MDgsImV4cCI6MjA5Mzc1MDYwOH0.r226GTofF9achTMauIIaDiMsFacwF0RntPLia5ERC2c';
+const GOOGLE_CLIENT_ID  = '837704481625-ahbc92035j1ilsor2mrj2nka8dkqs43v.apps.googleusercontent.com';
 
 const _READY = SUPABASE_URL !== 'YOUR_SUPABASE_URL' && SUPABASE_ANON_KEY !== 'YOUR_SUPABASE_ANON_KEY';
 
@@ -21,8 +22,10 @@ try {
   console.warn('[BrokerCompass Auth] Supabase init error:', e);
 }
 
-let _user        = null;
-let _activePanel = null;
+let _user           = null;
+let _activePanel    = null;
+let _gisReady       = false;
+let _googlePendingBtn = null;
 
 // ================================================================
 // INICIALIZACIÓN
@@ -379,10 +382,43 @@ async function _doRegister(e) {
   // Si data.session existe, onAuthStateChange lo gestiona automáticamente
 }
 
+function _initGIS() {
+  if (_gisReady || !window.google?.accounts?.id) return;
+  google.accounts.id.initialize({
+    client_id: GOOGLE_CLIENT_ID,
+    callback: _handleGoogleCredential,
+    auto_select: false,
+    cancel_on_tap_outside: true,
+    itp_support: true,
+  });
+  _gisReady = true;
+}
+
+async function _handleGoogleCredential(response) {
+  if (!_db) return;
+  if (_googlePendingBtn) _setGoogleLoading(_googlePendingBtn, false);
+
+  const { error } = await _db.auth.signInWithIdToken({
+    provider: 'google',
+    token: response.credential,
+  });
+
+  _googlePendingBtn = null;
+
+  if (error) {
+    _globalErr(_activePanel || 'login', 'Error al iniciar sesión con Google. Inténtalo de nuevo.');
+  }
+  // Éxito gestionado por onAuthStateChange
+}
+
 async function _doGoogle() {
   if (!_db) {
-    const panel = _activePanel || 'login';
-    _globalErr(panel, 'Google login no disponible: configura las credenciales de Supabase en auth.js');
+    _globalErr(_activePanel || 'login', 'Google login no disponible: configura las credenciales de Supabase en auth.js');
+    return;
+  }
+
+  if (!window.google?.accounts?.id) {
+    _globalErr(_activePanel || 'login', 'Google no está disponible. Recarga la página e inténtalo de nuevo.');
     return;
   }
 
@@ -390,14 +426,21 @@ async function _doGoogle() {
   sessionStorage.setItem('oauth_intent', intent);
 
   const btnId = intent === 'register' ? 'registerGoogleBtn' : 'loginGoogleBtn';
+  _initGIS();
+  _googlePendingBtn = btnId;
   _setGoogleLoading(btnId, true);
 
-  await _db.auth.signInWithOAuth({
-    provider: 'google',
-    options: {
-      redirectTo: 'https://brokercompass.es/',
-      queryParams: { prompt: 'select_account', access_type: 'online' },
-    },
+  google.accounts.id.prompt((notification) => {
+    if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
+      if (_googlePendingBtn) {
+        _setGoogleLoading(_googlePendingBtn, false);
+        _googlePendingBtn = null;
+      }
+      _globalErr(
+        _activePanel || 'login',
+        'No se pudo mostrar el selector de Google. Prueba a limpiar las cookies de Google o usa otro navegador.'
+      );
+    }
   });
 }
 
