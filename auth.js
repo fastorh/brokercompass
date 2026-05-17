@@ -436,11 +436,20 @@ async function _doGoogle() {
         _setGoogleLoading(_googlePendingBtn, false);
         _googlePendingBtn = null;
       }
-      _globalErr(
-        _activePanel || 'login',
-        'No se pudo mostrar el selector de Google. Prueba a limpiar las cookies de Google o usa otro navegador.'
-      );
+      // Fallback: redirect clásico de Supabase (funciona en todos los navegadores)
+      _doGoogleRedirect();
     }
+  });
+}
+
+async function _doGoogleRedirect() {
+  if (!_db) return;
+  await _db.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      redirectTo: 'https://brokercompass.es/',
+      queryParams: { prompt: 'select_account', access_type: 'online' },
+    },
   });
 }
 
