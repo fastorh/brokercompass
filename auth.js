@@ -417,15 +417,17 @@ async function _doGoogle() {
     return;
   }
 
-  if (!window.google?.accounts?.id) {
-    _globalErr(_activePanel || 'login', 'Google no está disponible. Recarga la página e inténtalo de nuevo.');
-    return;
-  }
-
   const intent = _activePanel === 'register' ? 'register' : 'login';
   sessionStorage.setItem('oauth_intent', intent);
 
   const btnId = intent === 'register' ? 'registerGoogleBtn' : 'loginGoogleBtn';
+
+  // Si GIS no está disponible (bloqueado por el navegador), usar redirect directo
+  if (!window.google?.accounts?.id) {
+    _setGoogleLoading(btnId, true);
+    return _doGoogleRedirect();
+  }
+
   _initGIS();
   _googlePendingBtn = btnId;
   _setGoogleLoading(btnId, true);
